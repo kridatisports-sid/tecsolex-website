@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tecsolex — AI-Native Media Infrastructure Platform</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+--black:#ffffff;--graphite:#f8f9fb;--navy:#f1f4f8;--surface:#ffffff;--surface2:#f4f6fa;
+--border:#e2e8f0;--border2:#cbd5e1;
+--purple:#1b4f5a;--purple2:#0d7c8f;--purple-glow:rgba(27,79,90,0.18);
+--blue:#0e7490;--blue2:#0c6378;--electric:#0d7c8f;--electric2:#0c6378;
+--platinum:#0f172a;--silver:#475569;--dim:#64748b;--muted:#94a3b8;
+--orange:#1b4f5a;--orange2:#0d7c8f;--orange-light:#2a9db5;
+--grad1:linear-gradient(135deg,#1b4f5a,#0d7c8f);
+--grad2:linear-gradient(135deg,#0d7c8f,#1b4f5a);
+--grad3:linear-gradient(180deg,rgba(27,79,90,0.06) 0%,transparent 100%);
+--font-head:'Space Grotesk',sans-serif;
+--font-body:'Inter',sans-serif;
+--font-mono:'JetBrains Mono',monospace;
+--ease-out:cubic-bezier(0.22,1,0.36,1);
+--ease-spring:cubic-bezier(0.34,1.56,0.64,1);
+--shadow-sm:0 1px 3px rgba(0,0,0,0.06),0 1px 2px rgba(0,0,0,0.04);
+--shadow-md:0 4px 16px rgba(0,0,0,0.08),0 2px 6px rgba(0,0,0,0.04);
+--shadow-lg:0 16px 48px rgba(0,0,0,0.1),0 4px 12px rgba(0,0,0,0.06);
+--shadow-teal:0 8px 32px rgba(27,79,90,0.2);
+}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{background:#fff;color:var(--platinum);font-family:var(--font-body);overflow-x:hidden;line-height:1.6}
+img{max-width:100%;display:block}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#f1f4f8}
+::-webkit-scrollbar-thumb{background:#0d7c8f;border-radius:2px}
+::selection{background:rgba(27,79,90,0.15);color:#1b4f5a}
+
+/* ── NAV ────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:0 2.5rem;height:72px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid transparent;transition:background 0.35s var(--ease-out),border-color 0.35s,backdrop-filter 0.35s,box-shadow 0.35s}
+nav.scrolled{background:rgba(255,255,255,0.96);border-bottom-color:var(--border);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 1px 20px rgba(0,0,0,0.06)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;transition:opacity 0.2s}
+.nav-logo:hover{opacity:0.8}
+.nav-logo-mark{height:40px;display:flex;align-items:center}
+.nav-logo-mark img{height:40px;width:auto;object-fit:contain;display:block}
+.nav-logo-text{display:none}
+.nav-links{display:flex;align-items:center;gap:2.5rem}
+.nav-links a{color:#334155;text-decoration:none;font-size:14px;font-weight:500;letter-spacing:0.01em;position:relative;padding-bottom:2px;transition:color 0.2s}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--grad1);border-radius:2px;transition:width 0.3s var(--ease-out)}
+.nav-links a:hover{color:#1b4f5a}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:10px}
+.btn-ghost{padding:8px 18px;border:1.5px solid var(--border2);border-radius:8px;color:#334155;font-size:13.5px;font-weight:500;background:transparent;cursor:pointer;transition:all 0.25s var(--ease-out);font-family:var(--font-body);text-decoration:none;white-space:nowrap}
+.btn-ghost:hover{border-color:#1b4f5a;color:#1b4f5a;background:rgba(27,79,90,0.04)}
+.btn-primary{padding:9px 20px;background:var(--grad1);border:none;border-radius:8px;color:#fff;font-size:13.5px;font-weight:600;cursor:pointer;transition:all 0.25s var(--ease-out);font-family:var(--font-body);text-decoration:none;letter-spacing:0.01em;white-space:nowrap;box-shadow:0 2px 8px rgba(27,79,90,0.25)}
+.btn-primary:hover{opacity:0.9;transform:translateY(-1px);box-shadow:var(--shadow-teal)}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;border-radius:8px;transition:background 0.2s}
+.nav-hamburger:hover{background:rgba(27,79,90,0.06)}
+.nav-hamburger span{display:block;width:22px;height:2px;background:#334155;border-radius:2px;transition:all 0.3s var(--ease-out);transform-origin:center}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* MOBILE NAV DRAWER */
+.mobile-nav{position:fixed;top:72px;left:0;right:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:999;padding:1.5rem 2rem;display:flex;flex-direction:column;gap:1rem;transform:translateY(-10px);opacity:0;visibility:hidden;transition:all 0.3s var(--ease-out)}
+.mobile-nav.open{transform:translateY(0);opacity:1;visibility:visible}
+.mobile-nav a{color:#334155;text-decoration:none;font-size:15px;font-weight:500;padding:10px 0;border-bottom:1px solid var(--border);transition:color 0.2s}
+.mobile-nav a:last-child{border-bottom:none}
+.mobile-nav a:hover{color:#1b4f5a}
+.mobile-nav .mobile-cta{display:flex;flex-direction:column;gap:10px;margin-top:8px}
+
+/* ── HERO ───────────────────────────────────────────── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:120px 2rem 80px;background:#fff}
+.hero-bg{position:absolute;inset:0;z-index:0}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(27,79,90,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(27,79,90,0.04) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow-1{position:absolute;top:-20%;left:-10%;width:60%;height:60%;background:radial-gradient(ellipse,rgba(27,79,90,0.1) 0%,transparent 70%);filter:blur(70px)}
+.hero-glow-2{position:absolute;bottom:-20%;right:-10%;width:50%;height:50%;background:radial-gradient(ellipse,rgba(14,116,144,0.14) 0%,transparent 70%);filter:blur(70px)}
+.hero-glow-3{position:absolute;top:30%;left:40%;width:40%;height:40%;background:radial-gradient(ellipse,rgba(27,79,90,0.06) 0%,transparent 70%);filter:blur(80px)}
+#particles-canvas{position:absolute;inset:0;z-index:1;pointer-events:none}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;width:100%}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(27,79,90,0.08);border:1px solid rgba(27,79,90,0.2);border-radius:100px;padding:7px 18px;margin-bottom:32px;transition:all 0.3s}
+.hero-badge:hover{background:rgba(27,79,90,0.12);border-color:rgba(27,79,90,0.35)}
+.hero-badge-dot{width:6px;height:6px;background:var(--electric);border-radius:50%;animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+.hero-badge span{font-size:12px;font-weight:600;color:#1b4f5a;letter-spacing:0.07em;text-transform:uppercase}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.hero-h1{font-family:var(--font-head);font-size:clamp(2.8rem,6vw,5.5rem);font-weight:700;line-height:1.05;letter-spacing:-0.03em;margin-bottom:24px;color:#0f172a}
+.hero-h1 .grad{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-h1 .grad2{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:#475569;max-width:640px;margin:0 auto 44px;line-height:1.75;font-weight:400}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.btn-hero{padding:14px 32px;background:var(--grad1);border:none;border-radius:10px;color:#fff;font-size:15px;font-weight:600;cursor:pointer;transition:all 0.3s var(--ease-out);font-family:var(--font-body);text-decoration:none;letter-spacing:0.01em;position:relative;overflow:hidden;box-shadow:0 4px 20px rgba(27,79,90,0.3)}
+.btn-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.12),transparent);opacity:0;transition:opacity 0.3s}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(27,79,90,0.35)}
+.btn-hero:hover::after{opacity:1}
+.btn-hero:active{transform:translateY(0)}
+.btn-hero-ghost{padding:13px 28px;background:transparent;border:1.5px solid #cbd5e1;border-radius:10px;color:#334155;font-size:15px;font-weight:500;cursor:pointer;transition:all 0.3s var(--ease-out);font-family:var(--font-body);text-decoration:none;display:flex;align-items:center;gap:10px}
+.btn-hero-ghost:hover{border-color:#1b4f5a;color:#1b4f5a;background:rgba(27,79,90,0.04);transform:translateY(-1px)}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:var(--font-head);font-size:1.9rem;font-weight:700;background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.hero-stat-label{font-size:11px;color:#64748b;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;margin-top:5px}
+.hero-divider{width:1px;height:36px;background:#cbd5e1;flex-shrink:0}
+.data-stream{position:absolute;width:1px;background:linear-gradient(180deg,transparent,rgba(27,79,90,0.3),transparent);animation:stream 4s linear infinite;opacity:0}
+@keyframes stream{0%{transform:translateY(-100%);opacity:0}20%{opacity:1}80%{opacity:1}100%{transform:translateY(200%);opacity:0}}
+
+/* FLOATING BADGES */
+.floating-badge{position:absolute;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:10px;box-shadow:0 8px 32px rgba(0,0,0,0.1);animation:float 6s ease-in-out infinite;z-index:2;transition:transform 0.3s,box-shadow 0.3s}
+.floating-badge:hover{box-shadow:0 16px 48px rgba(27,79,90,0.15);transform:translateY(-4px) !important}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.floating-badge.b1{bottom:15%;left:4%;animation-delay:0s}
+.floating-badge.b2{top:20%;right:4%;animation-delay:2s}
+.floating-badge.b3{bottom:25%;right:8%;animation-delay:4s}
+.badge-icon{font-size:20px;flex-shrink:0}
+.badge-text{font-size:11px;white-space:nowrap}
+.badge-text strong{display:block;color:#0f172a;font-weight:600;font-size:12px}
+.badge-text span{color:#64748b}
+
+/* ── SECTIONS COMMON ────────────────────────────────── */
+section{padding:80px 2rem;position:relative}
+.container{max-width:1200px;margin:0 auto;padding:0 1rem}
+.section-label{font-size:11px;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#1b4f5a;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.section-label::before{content:'';display:block;width:20px;height:2px;background:var(--grad1);border-radius:2px;flex-shrink:0}
+.section-h2{font-family:var(--font-head);font-size:clamp(2rem,4vw,3rem);font-weight:700;letter-spacing:-0.03em;line-height:1.1;color:#0f172a}
+.section-h2 .grad{background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-h2 .grad2{background:var(--grad2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-sub{font-size:1.05rem;color:#475569;margin-top:16px;max-width:580px;line-height:1.75}
+
+/* ── TRUSTED / TICKER ───────────────────────────────── */
+.trusted{padding:56px 2rem;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;background:#f8f9fb}
+.trusted-inner{max-width:1200px;margin:0 auto;text-align:center}
+.trusted-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;margin-bottom:28px}
+.logo-ticker{overflow:hidden;position:relative}
+.logo-ticker::before,.logo-ticker::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+.logo-ticker::before{left:0;background:linear-gradient(90deg,#f8f9fb,transparent)}
+.logo-ticker::after{right:0;background:linear-gradient(-90deg,#f8f9fb,transparent)}
+.logo-track{display:flex;gap:64px;animation:ticker 28s linear infinite;width:max-content;align-items:center}
+.logo-track:hover{animation-play-state:paused}
+.logo-item{display:flex;align-items:center;padding:0 16px;opacity:0.4;transition:opacity 0.4s,filter 0.4s;filter:grayscale(100%) brightness(0.4)}
+.logo-item:hover{opacity:1;filter:grayscale(0%) brightness(1)}
+.logo-item img{max-height:38px;width:auto;object-fit:contain}
+@keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── ECOSYSTEM ──────────────────────────────────────── */
+.ecosystem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.ecosystem-visual{position:relative;height:480px;display:flex;align-items:center;justify-content:center}
+.eco-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100px;height:100px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 3px #1b4f5a,0 0 0 8px rgba(27,79,90,0.12),var(--shadow-lg);z-index:5;transition:transform 0.4s var(--ease-spring)}
+.eco-center:hover{transform:translate(-50%,-50%) scale(1.08)}
+.eco-center img{height:56px;width:auto;object-fit:contain}
+.eco-ring{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;animation:spin-slow 20s linear infinite}
+.eco-ring.r1{width:190px;height:190px;border:1.5px solid rgba(27,79,90,0.2)}
+.eco-ring.r2{width:300px;height:300px;border:1px solid rgba(13,124,143,0.15);animation-direction:reverse;animation-duration:30s}
+.eco-ring.r3{width:420px;height:420px;border:1px solid rgba(27,79,90,0.08);animation-duration:45s}
+@keyframes spin-slow{from{transform:translate(-50%,-50%) rotate(0deg)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+.eco-node{position:absolute;width:68px;height:68px;background:#fff;border:1.5px solid #e2e8f0;box-shadow:var(--shadow-sm);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;transition:all 0.3s var(--ease-out);z-index:4}
+.eco-node:hover{border-color:#1b4f5a;box-shadow:0 4px 20px rgba(27,79,90,0.2);transform:scale(1.12)}
+.eco-node-icon{font-size:18px;line-height:1}
+.eco-node-label{font-size:7.5px;font-weight:700;color:#475569;letter-spacing:0.06em;text-transform:uppercase;text-align:center;line-height:1.2}
+.eco-features{display:grid;gap:16px}
+.eco-feature{background:#fff;border:1.5px solid #e2e8f0;border-radius:14px;padding:22px;transition:all 0.3s var(--ease-out);cursor:pointer;box-shadow:var(--shadow-sm)}
+.eco-feature:hover{border-color:#1b4f5a;background:rgba(27,79,90,0.03);transform:translateX(6px);box-shadow:var(--shadow-teal)}
+.eco-feature-header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+.eco-feature-icon{width:40px;height:40px;background:rgba(27,79,90,0.08);border:1px solid rgba(27,79,90,0.18);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;transition:background 0.3s}
+.eco-feature:hover .eco-feature-icon{background:rgba(27,79,90,0.14)}
+.eco-feature-title{font-family:var(--font-head);font-size:14.5px;font-weight:600;color:#0f172a}
+.eco-feature-desc{font-size:13px;color:#475569;line-height:1.65}
+
+/* ── AI SECTION ─────────────────────────────────────── */
+.ai-rights{background:linear-gradient(180deg,#f8f9fb 0%,#f1f4f8 60%,#f8f9fb 100%)}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:60px}
+.ai-terminal{background:#0d1117;border:1px solid #21262d;border-radius:16px;overflow:hidden;font-family:var(--font-mono);box-shadow:var(--shadow-lg)}
+.ai-term-header{background:#161b22;padding:12px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid #21262d}
+.ai-term-header span{font-size:12px;color:#8b949e;margin-left:4px}
+.ai-term-body{padding:20px;font-size:12px;line-height:2.1}
+.ai-line{margin:1px 0}
+.ai-line .prompt{color:#388bfd}
+.ai-line .cmd{color:#e6edf3}
+.ai-line .output{color:#8b949e}
+.ai-line .success{color:#3fb950}
+.ai-line .warn{color:#d29922}
+.ai-line .val{color:#79c0ff}
+.ai-cursor{display:inline-block;width:8px;height:14px;background:#388bfd;animation:blink 1.2s ease infinite;vertical-align:middle;border-radius:1px}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.ai-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ai-feat{background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:20px;transition:all 0.3s var(--ease-out);box-shadow:var(--shadow-sm);cursor:default;will-change:transform}
+.ai-feat:hover{border-color:#1b4f5a;box-shadow:var(--shadow-teal);transform:translateY(-2px)}
+.ai-feat-icon{font-size:22px;margin-bottom:10px;display:block}
+.ai-feat-title{font-size:13px;font-weight:600;color:#0f172a;margin-bottom:6px}
+.ai-feat-desc{font-size:12.5px;color:#475569;line-height:1.6}
+
+/* ── MODULES ────────────────────────────────────────── */
+.modules-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.module-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:24px;box-shadow:var(--shadow-sm);transition:all 0.35s var(--ease-out);position:relative;overflow:hidden;cursor:pointer;will-change:transform}
+.module-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad1);transform:scaleX(0);transform-origin:left;transition:transform 0.4s var(--ease-out)}
+.module-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at top left,rgba(27,79,90,0.04),transparent 60%);opacity:0;transition:opacity 0.4s;pointer-events:none}
+.module-card:hover{border-color:#0d7c8f;transform:translateY(-5px);box-shadow:0 16px 48px rgba(27,79,90,0.13)}
+.module-card:hover::before{transform:scaleX(1)}
+.module-card:hover::after{opacity:1}
+.module-icon{width:52px;height:52px;background:rgba(27,79,90,0.07);border:1.5px solid rgba(27,79,90,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:16px;transition:background 0.3s,border-color 0.3s}
+.module-card:hover .module-icon{background:rgba(27,79,90,0.12);border-color:rgba(27,79,90,0.3)}
+.module-icon img{width:32px;height:32px;object-fit:contain}
+.module-title{font-family:var(--font-head);font-size:15px;font-weight:600;color:#0f172a;margin-bottom:10px;line-height:1.3}
+.module-desc{font-size:12.5px;color:#475569;line-height:1.65}
+.module-tag{display:inline-block;margin-top:14px;padding:3px 10px;background:rgba(13,124,143,0.1);border:1px solid rgba(13,124,143,0.25);border-radius:100px;font-size:10px;font-weight:700;color:#0d7c8f;letter-spacing:0.06em;text-transform:uppercase}
+
+/* ── CASE STUDIES ───────────────────────────────────── */
+.cases-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.case-card{background:#fff;border:1.5px solid #e2e8f0;border-radius:18px;overflow:hidden;transition:all 0.35s var(--ease-out);cursor:pointer;box-shadow:var(--shadow-sm);will-change:transform}
+.case-card:hover{border-color:#1b4f5a;transform:translateY(-8px);box-shadow:0 24px 64px rgba(27,79,90,0.14)}
+.case-img{height:160px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.case-img-bg{font-size:52px;transition:transform 0.4s var(--ease-spring)}
+.case-card:hover .case-img-bg{transform:scale(1.15)}
+.case-body{padding:24px}
+.case-sector{font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#1b4f5a;margin-bottom:8px}
+.case-title{font-family:var(--font-head);font-size:16px;font-weight:600;color:#0f172a;margin-bottom:10px;line-height:1.35}
+.case-desc{font-size:13px;color:#475569;line-height:1.65}
+.case-metric{margin-top:16px;padding-top:16px;border-top:1px solid #e2e8f0;display:flex;gap:20px}
+.case-metric-item .num{font-family:var(--font-head);font-size:1.15rem;font-weight:700;color:#0d7c8f}
+.case-metric-item .lbl{font-size:11px;color:#64748b;margin-top:2px}
+
+/* ── VIDEO SECTION ──────────────────────────────────── */
+.video-wrapper{position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:18px;border:1px solid var(--border2);box-shadow:0 32px 80px rgba(0,0,0,0.15);transition:box-shadow 0.4s}
+.video-wrapper:hover{box-shadow:0 40px 100px rgba(0,0,0,0.2)}
+.video-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0}
+
+/* ── ENTERPRISE CTA ─────────────────────────────────── */
+.cta-section{background:linear-gradient(135deg,#0d1f2d 0%,#1b4f5a 100%);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;padding:120px 2rem;position:relative;overflow:hidden}
+.cta-section .btn-hero-ghost{color:#fff;border-color:rgba(255,255,255,0.4)}
+.cta-section .btn-hero-ghost:hover{color:#fff;border-color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.1)}
+.cta-section::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at center,rgba(13,124,143,0.12) 0%,transparent 60%);pointer-events:none}
+.cta-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.cta-h2{font-family:var(--font-head);font-size:clamp(2rem,4vw,3.5rem);font-weight:700;letter-spacing:-0.03em;color:#f0f4f8;margin-bottom:20px;line-height:1.1}
+.cta-sub{font-size:1.1rem;color:rgba(240,244,248,0.7);margin-bottom:44px;line-height:1.75}
+.cta-actions{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.cta-form{display:flex;gap:12px;max-width:460px;margin:40px auto 0}
+.cta-input{flex:1;background:rgba(255,255,255,0.1);border:1.5px solid rgba(255,255,255,0.2);border-radius:10px;padding:12px 18px;color:#f0f4f8;font-size:14px;font-family:var(--font-body);outline:none;transition:all 0.25s;min-width:0}
+.cta-input:focus{border-color:rgba(255,255,255,0.5);background:rgba(255,255,255,0.15)}
+.cta-input::placeholder{color:rgba(255,255,255,0.4)}
+.cta-btn-white{padding:12px 24px;background:#fff;border:none;border-radius:10px;color:#1b4f5a;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:all 0.25s;white-space:nowrap}
+.cta-btn-white:hover{background:#f0f4f8;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+
+/* ── FOOTER ─────────────────────────────────────────── */
+footer{background:#0d1f2d;border-top:1px solid rgba(255,255,255,0.06);padding:64px 2rem 32px}
+.footer-inner{max-width:1200px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,0.06)}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.4);margin-top:14px;line-height:1.75;max-width:220px}
+.footer-social{display:flex;gap:10px;margin-top:20px}
+.footer-social a{width:34px;height:34px;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;text-decoration:none;color:rgba(255,255,255,0.5);transition:all 0.25s}
+.footer-social a:hover{background:rgba(27,79,90,0.4);border-color:rgba(27,79,90,0.6);color:#fff;transform:translateY(-2px)}
+.footer-col-title{font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:18px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.35);text-decoration:none;margin-bottom:12px;transition:color 0.2s;line-height:1.4}
+.footer-col a:hover{color:rgba(255,255,255,0.85)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:12px;color:rgba(255,255,255,0.25);line-height:1.5}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap}
+.footer-links a{font-size:12px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.6)}
+
+/* ── SCROLL TO TOP ──────────────────────────────────── */
+#scrollTop{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--grad1);border:none;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(27,79,90,0.35);opacity:0;transform:translateY(12px);transition:all 0.3s var(--ease-out);z-index:998;line-height:1}
+#scrollTop.visible{opacity:1;transform:translateY(0)}
+#scrollTop:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(27,79,90,0.45)}
+
+/* ── GLOW / MISC ────────────────────────────────────── */
+.map-label{font-size:10px;font-weight:600;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px}
+.map-dots{position:relative;height:120px}
+.map-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:#0d7c8f;box-shadow:0 0 10px #0d7c8f;animation:map-pulse 2s ease-in-out infinite}
+.map-dot::after{content:'';position:absolute;inset:-4px;border-radius:50%;border:1px solid #0d7c8f;animation:ring-expand 2s ease-out infinite;opacity:0}
+@keyframes map-pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+@keyframes ring-expand{0%{transform:scale(1);opacity:0.5}100%{transform:scale(2.5);opacity:0}}
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,#0d7c8f,transparent);margin:2px 0;opacity:0.25}
+.dash-dot.red{background:#ff5f57}
+.dash-dot.yellow{background:#ffbd2e}
+.dash-dot.green{background:#3fb950}
+.dash-bar:hover{opacity:1}
+.dash-nav-item.active{color:#0f172a;background:rgba(27,79,90,0.08);border-left-color:#1b4f5a}
+.dash-nav-item:hover:not(.active){color:var(--silver)}
+
+/* ── CONTACT MODAL ──────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(10,20,30,0.65);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);z-index:9999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity 0.3s,visibility 0.3s;padding:1rem}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-box{background:#fff;border-radius:22px;padding:2.5rem;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;position:relative;box-shadow:0 40px 100px rgba(0,0,0,0.25),0 0 0 1px rgba(0,0,0,0.04);transform:translateY(24px) scale(0.98);transition:transform 0.35s var(--ease-spring)}
+.modal-overlay.open .modal-box{transform:translateY(0) scale(1)}
+.modal-close{position:absolute;top:1.2rem;right:1.2rem;width:32px;height:32px;background:none;border:none;font-size:20px;cursor:pointer;color:#94a3b8;border-radius:8px;transition:all 0.2s;display:flex;align-items:center;justify-content:center}
+.modal-close:hover{background:#f1f4f8;color:#334155}
+.modal-title{font-family:var(--font-head);font-size:1.5rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+.modal-sub{color:#64748b;font-size:13.5px;margin-bottom:1.8rem;line-height:1.6}
+.modal-form .field{margin-bottom:1.1rem}
+.modal-form label{display:block;font-size:12.5px;font-weight:600;color:#334155;margin-bottom:6px;letter-spacing:0.02em}
+.modal-form input[type=text],.modal-form input[type=email],.modal-form input[type=tel]{width:100%;padding:11px 14px;border:1.5px solid #e2e8f0;border-radius:10px;font-size:14px;font-family:var(--font-body);color:#0f172a;background:#f8f9fb;transition:all 0.25s;outline:none}
+.modal-form input:focus{border-color:#1b4f5a;box-shadow:0 0 0 3px rgba(27,79,90,0.1);background:#fff}
+.check-label{font-size:12.5px;font-weight:600;color:#334155;margin-bottom:10px;display:block;letter-spacing:0.02em}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:1.2rem}
+.check-item{display:flex;align-items:center;gap:8px;padding:9px 12px;border:1.5px solid #e2e8f0;border-radius:10px;cursor:pointer;transition:all 0.2s;background:#f8f9fb}
+.check-item:hover{border-color:#1b4f5a;background:rgba(27,79,90,0.04)}
+.check-item input[type=checkbox]{accent-color:#1b4f5a;width:15px;height:15px;cursor:pointer;flex-shrink:0}
+.check-item span{font-size:12.5px;color:#334155;font-weight:500;line-height:1.3}
+.check-item:has(input:checked){border-color:#1b4f5a;background:rgba(27,79,90,0.06)}
+.modal-submit{width:100%;padding:13px;background:var(--grad1);color:#fff;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:var(--font-head);cursor:pointer;transition:all 0.25s;margin-top:6px;box-shadow:0 4px 16px rgba(27,79,90,0.25)}
+.modal-submit:hover{opacity:0.9;transform:translateY(-1px);box-shadow:0 8px 28px rgba(27,79,90,0.3)}
+.modal-success{display:none;text-align:center;padding:1.5rem 0}
+.modal-success .tick{font-size:52px;margin-bottom:16px;display:block}
+.modal-success h3{font-family:var(--font-head);font-size:1.25rem;color:#0f172a;margin-bottom:8px}
+.modal-success p{color:#64748b;font-size:14px;line-height:1.6}
+
+/* ── RESPONSIVE ─────────────────────────────────────── */
+@media(max-width:1024px){
+.modules-grid{grid-template-columns:repeat(3,1fr)}
+.footer-top{grid-template-columns:1fr 1fr 1fr;gap:32px}
+.footer-top .footer-brand{grid-column:1/-1}
+}
+@media(max-width:768px){
+nav{padding:0 1.25rem;height:64px}
+.mobile-nav{top:64px}
+.nav-links{display:none}
+.nav-cta{display:none}
+.nav-hamburger{display:flex}
+section{padding:60px 1.25rem}
+.container{padding:0}
+.ecosystem-grid,.ai-grid{grid-template-columns:1fr;gap:40px}
+.ecosystem-visual{height:340px}
+.eco-ring.r3{width:320px;height:320px}
+.eco-ring.r2{width:230px;height:230px}
+.eco-ring.r1{width:150px;height:150px}
+.modules-grid{grid-template-columns:1fr 1fr;gap:12px}
+.ai-features-grid{grid-template-columns:1fr 1fr;gap:12px}
+.cases-grid{grid-template-columns:1fr;max-width:480px;margin-left:auto;margin-right:auto}
+.footer-top{grid-template-columns:1fr 1fr;gap:28px}
+.footer-top .footer-brand{grid-column:1/-1}
+.hero-stats{gap:20px}
+.hero-divider{display:none}
+.cta-form{flex-direction:column}
+.floating-badge{display:none}
+.cta-section{padding:80px 1.5rem}
+.check-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+nav{height:60px}
+.mobile-nav{top:60px}
+.modules-grid{grid-template-columns:1fr;gap:12px}
+.ai-features-grid{grid-template-columns:1fr;gap:10px}
+.hero-actions{flex-direction:column;align-items:stretch}
+.btn-hero,.btn-hero-ghost{text-align:center;justify-content:center}
+.footer-top{grid-template-columns:1fr}
+.modal-box{padding:1.75rem 1.25rem;border-radius:18px}
+#scrollTop{bottom:20px;right:20px;width:40px;height:40px;font-size:16px}
+.hero{padding:100px 1.25rem 60px}
+}
+
+/* Client logo text fallback */
+.logo-text-item { display:flex; align-items:center; padding:0 24px; }
+.client-name { font-family:var(--font-head); font-size:16px; font-weight:700; letter-spacing:-0.02em; white-space:nowrap; opacity:0.55; transition:opacity 0.3s; }
+.logo-item.logo-text-item:hover .client-name { opacity:1; }
+
+/* SAFETY: ensure cards are never stuck invisible (GSAP fallback) */
+.module-card,.ai-feat,.case-card,.eco-feature,.eco-node{opacity:1}
+/* GSAP will set opacity:0 before animating — this ensures fallback if JS fails */
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">
+    <div class="nav-logo-mark">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgNzUiIHdpZHRoPSIzNDAiIGhlaWdodD0iNzUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iVGVjc29sZXgiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAubG9nby10ZXh0IHsgZm9udC1mYW1pbHk6ICdBcmlhbCBCbGFjaycsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogOTAwOyBmb250LXNpemU6IDQ2cHg7IH0KICAgICAgLmxvZ28tdGFnICB7IGZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNTAwOyBmb250LXNpemU6IDlweDsgbGV0dGVyLXNwYWNpbmc6IDIuNXB4OyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8IS0tIE1haW4gd29yZG1hcmsgLS0+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGV4dCIgeT0iNTIiPgogICAgPHRzcGFuIGZpbGw9IiMxYjRmNWEiPlRFQ1M8L3RzcGFuPjx0c3BhbiBmaWxsPSIjZjQ3OTIwIj5PPC90c3Bhbj48dHNwYW4gZmlsbD0iIzFiNGY1YSI+TEVYPC90c3Bhbj4KICA8L3RleHQ+CiAgPCEtLSBUYWdsaW5lIHJvdyAtLT4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5URUNITk9MT0dZPC90ZXh0PgogIDxjaXJjbGUgY3g9IjkzIiAgY3k9IjY1IiByPSIyIiBmaWxsPSIjZjQ3OTIwIi8+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGFnIiB4PSI5OSIgIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5TT0xVVElPTlM8L3RleHQ+CiAgPGNpcmNsZSBjeD0iMTgxIiBjeT0iNjUiIHI9IjIiIGZpbGw9IiNmNDc5MjAiLz4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHg9IjE4NyIgeT0iNjgiIGZpbGw9IiMxYjRmNWEiPkVYQ0VMTEVOQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="Tecsolex"
+        style="height:36px;width:auto;object-fit:contain;display:block;vertical-align:middle">
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#platform">Products &amp; Services</a>
+    <a href="#ecosystem">About</a>
+
+  </div>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-cta">
+    <a href="#" data-modal="contact" class="btn-ghost">Get in Touch</a>
+    <a href="#" data-modal="contact" class="btn-primary">Request Demo</a>
+  </div>
+</nav>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#platform" onclick="closeMobileNav()">Products &amp; Services</a>
+  <a href="#ecosystem" onclick="closeMobileNav()">About</a>
+  <div class="mobile-cta">
+    <a href="#" data-modal="contact" onclick="closeMobileNav();openModal()" class="btn-primary" style="text-align:center;display:block">Request Demo</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="hero-glow-3"></div>
+    <div class="data-stream" style="left:15%;animation-delay:0s;height:200px"></div>
+    <div class="data-stream" style="left:35%;animation-delay:1s;height:300px"></div>
+    <div class="data-stream" style="left:65%;animation-delay:0.5s;height:250px"></div>
+    <div class="data-stream" style="left:85%;animation-delay:1.5s;height:180px"></div>
+  </div>
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="hero-content" id="hero-content">
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      <span>Innovative Media Solution for TV &amp; Film</span>
+    </div>
+    <h1 class="hero-h1">
+      Produce &amp; Manage<br>
+      <span class="grad">Content Smartly</span>
+    </h1>
+    <p class="hero-sub">
+      Tecsolex is a media solution company delivering innovative enterprise platforms for TV &amp; film production management — covering rights, contracts, syndication, content operations and distribution in one unified system.
+    </p>
+    <div class="hero-actions">
+      <a href="#" data-modal="contact" class="btn-hero">Connect With Us →</a>
+      <a href="#platform" class="btn-hero-ghost">
+        <span>▶</span> Explore ActionClap
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">TV &amp; Film</div>
+        <div class="hero-stat-label">Production Focus</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Enterprise</div>
+        <div class="hero-stat-label">Grade Solution</div>
+      </div>
+      <div class="hero-divider"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">Mumbai</div>
+        <div class="hero-stat-label">HQ, India</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED -->
+<div class="trusted">
+  <div class="trusted-inner">
+    <p class="trusted-label">Trusted by India's leading media & entertainment companies</p>
+    <div class="logo-ticker">
+      <div class="logo-track" id="logo-track">
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#e50000">Zee Studio</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#8b1a1a">Dashami</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#ff6600">Enterr10</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#0066cc">Nielsen</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#333333">Endemol Shine</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#003087">Sony Pictures</span></div>
+        <!-- Duplicated for seamless loop -->
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#e50000">Zee Studio</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#8b1a1a">Dashami</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#ff6600">Enterr10</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#0066cc">Nielsen</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#333333">Endemol Shine</span></div>
+        <div class="logo-item logo-text-item"><span class="client-name" style="color:#003087">Sony Pictures</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ECOSYSTEM -->
+<section id="ecosystem">
+  <div class="container">
+    <div class="section-label">Our Platform</div>
+    <h2 class="section-h2">One Platform.<br><span class="grad">Every Media Operation.</span></h2>
+    <p class="section-sub">Tecsolex delivers innovative enterprise solutions for TV &amp; film production management — covering every workflow from greenlight to syndication.</p>
+    <div class="ecosystem-grid">
+      <div class="ecosystem-visual">
+        <div class="eco-ring r1"></div>
+        <div class="eco-ring r2"></div>
+        <div class="eco-ring r3"></div>
+        <div class="eco-center"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgNzUiIHdpZHRoPSIzNDAiIGhlaWdodD0iNzUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iVGVjc29sZXgiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAubG9nby10ZXh0IHsgZm9udC1mYW1pbHk6ICdBcmlhbCBCbGFjaycsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogOTAwOyBmb250LXNpemU6IDQ2cHg7IH0KICAgICAgLmxvZ28tdGFnICB7IGZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNTAwOyBmb250LXNpemU6IDlweDsgbGV0dGVyLXNwYWNpbmc6IDIuNXB4OyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8IS0tIE1haW4gd29yZG1hcmsgLS0+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGV4dCIgeT0iNTIiPgogICAgPHRzcGFuIGZpbGw9IiMxYjRmNWEiPlRFQ1M8L3RzcGFuPjx0c3BhbiBmaWxsPSIjZjQ3OTIwIj5PPC90c3Bhbj48dHNwYW4gZmlsbD0iIzFiNGY1YSI+TEVYPC90c3Bhbj4KICA8L3RleHQ+CiAgPCEtLSBUYWdsaW5lIHJvdyAtLT4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5URUNITk9MT0dZPC90ZXh0PgogIDxjaXJjbGUgY3g9IjkzIiAgY3k9IjY1IiByPSIyIiBmaWxsPSIjZjQ3OTIwIi8+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGFnIiB4PSI5OSIgIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5TT0xVVElPTlM8L3RleHQ+CiAgPGNpcmNsZSBjeD0iMTgxIiBjeT0iNjUiIHI9IjIiIGZpbGw9IiNmNDc5MjAiLz4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHg9IjE4NyIgeT0iNjgiIGZpbGw9IiMxYjRmNWEiPkVYQ0VMTEVOQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="Tecsolex" style="height:52px;width:auto;object-fit:contain;display:block;padding:4px"></div>
+        <!-- Nodes positioned around rings -->
+        <div class="eco-node" style="top:12%;left:50%;transform:translateX(-50%)">
+          <div class="eco-node-icon">⚖️</div>
+          <div class="eco-node-label">Rights</div>
+        </div>
+        <div class="eco-node" style="top:50%;right:8%;transform:translateY(-50%)">
+          <div class="eco-node-icon">📄</div>
+          <div class="eco-node-label">Contracts</div>
+        </div>
+        <div class="eco-node" style="bottom:12%;left:50%;transform:translateX(-50%)">
+          <div class="eco-node-icon">💰</div>
+          <div class="eco-node-label">Royalties</div>
+        </div>
+        <div class="eco-node" style="top:50%;left:8%;transform:translateY(-50%)">
+          <div class="eco-node-icon">🌐</div>
+          <div class="eco-node-label">Distrib</div>
+        </div>
+        <div class="eco-node" style="top:25%;right:18%">
+          <div class="eco-node-icon">🤖</div>
+          <div class="eco-node-label">AI</div>
+        </div>
+        <div class="eco-node" style="bottom:25%;right:18%">
+          <div class="eco-node-icon">📊</div>
+          <div class="eco-node-label">Analytics</div>
+        </div>
+        <div class="eco-node" style="bottom:25%;left:18%">
+          <div class="eco-node-icon">🎬</div>
+          <div class="eco-node-label">Production</div>
+        </div>
+        <div class="eco-node" style="top:25%;left:18%">
+          <div class="eco-node-icon">🏪</div>
+          <div class="eco-node-label">Market</div>
+        </div>
+      </div>
+      <div class="eco-features">
+        <div class="eco-feature">
+          <div class="eco-feature-header">
+            <div class="eco-feature-icon">💡</div>
+            <div class="eco-feature-title">Passion for Innovation</div>
+          </div>
+          <div class="eco-feature-desc">We improve client experiences by bringing feature-rich innovative solutions that increase productivity and efficiency across every media workflow.</div>
+        </div>
+        <div class="eco-feature">
+          <div class="eco-feature-header">
+            <div class="eco-feature-icon">🏗️</div>
+            <div class="eco-feature-title">Enterprise Solution</div>
+          </div>
+          <div class="eco-feature-desc">We design enterprise solutions for media &amp; entertainment businesses including SAP integrations and other third-party ecosystem connections.</div>
+        </div>
+        <div class="eco-feature">
+          <div class="eco-feature-header">
+            <div class="eco-feature-icon">🎯</div>
+            <div class="eco-feature-title">Rich Experience</div>
+          </div>
+          <div class="eco-feature-desc">Deep expertise in media technology — from intuitive user interfaces to complex backend workflows — built by a team that understands the entertainment industry.</div>
+        </div>
+        <div class="eco-feature">
+          <div class="eco-feature-header">
+            <div class="eco-feature-icon">🏆</div>
+            <div class="eco-feature-title">Result Oriented Team</div>
+          </div>
+          <div class="eco-feature-desc">An organisation focused on outcomes — delivering measurable results alongside the process used to produce a product or deliver a service to media clients.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI RIGHTS INTELLIGENCE -->
+<section class="ai-rights" id="ai-intelligence">
+  <div class="container">
+    <div class="section-label">Intelligent Media Operations</div>
+    <h2 class="section-h2"><span class="grad2">Smart Automation</span><br>for Media Enterprises</h2>
+    <p class="section-sub">Tecsolex brings outcome-oriented intelligence to every media workflow — from contract management and rights tracking to syndication sales and content distribution.</p>
+    <div class="ai-grid">
+      <div class="ai-features-grid">
+        <div class="ai-feat">
+          <div class="ai-feat-icon">📄</div>
+          <div class="ai-feat-title">Legal Management</div>
+          <div class="ai-feat-desc">Manage cast &amp; crew contracts end-to-end. Automated drafting, approval workflows, execution and obligation tracking.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">⚖️</div>
+          <div class="ai-feat-title">Rights Intelligence</div>
+          <div class="ai-feat-desc">Track all acquisition and music rights. Automated alerts for expiry, renewals, and territory conflicts.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">🔍</div>
+          <div class="ai-feat-title">Searchable Metadata</div>
+          <div class="ai-feat-desc">Content Hub solves the challenge of finding relevant data for syndication sales with fully searchable asset metadata.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">💡</div>
+          <div class="ai-feat-title">Concept Workflow</div>
+          <div class="ai-feat-desc">Centralized concept ideation and greenlight approval system — collaborate across teams from pitch to production start.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">🤝</div>
+          <div class="ai-feat-title">OPS Collaboration</div>
+          <div class="ai-feat-desc">Syndication, Finance and OPS teams work on one platform — eliminating silos, emails, and manual reconciliation.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">🏪</div>
+          <div class="ai-feat-title">Presales Marketplace</div>
+          <div class="ai-feat-desc">Integrated content listing portal enabling presales of your own content to buyers before production completes.</div>
+        </div>
+      </div>
+      <div class="ai-terminal">
+        <div class="ai-term-header">
+          <div class="dash-dot green"></div>
+          <span>Tecsolex AI Engine · Live</span>
+        </div>
+        <div class="ai-term-body">
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">actionclap.rights</span> <span class="val">"Music_Acquisition_Q2"</span></div>
+          <div class="ai-line"><span class="output">  Scanning acquisition &amp; music rights...</span></div>
+          <div class="ai-line"><span class="success">  ✓ Rights verified: Compliant</span></div>
+          <div class="ai-line"><span class="warn">  ⚠ 2 rights: Renewal window open</span></div>
+          <div class="ai-line"><span class="output">  Recommended action: </span><span class="val">Renegotiate</span></div>
+          <div class="ai-line">&nbsp;</div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">contracts.review</span> <span class="val">"Cast_Crew_Bundle"</span></div>
+          <div class="ai-line"><span class="output">  Processing cast &amp; crew contracts...</span></div>
+          <div class="ai-line"><span class="success">  ✓ 47 contracts: Executed</span></div>
+          <div class="ai-line"><span class="output">  Compliance: </span><span class="val">100% Clear</span></div>
+          <div class="ai-line">&nbsp;</div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">syndication.pipeline</span> <span class="val">--live</span></div>
+          <div class="ai-line"><span class="output">  Finance &amp; OPS team sync...</span></div>
+          <div class="ai-line"><span class="success">  ✓ 12 deals active in marketplace</span></div>
+          <div class="ai-line"><span class="output">  Content Hub: </span><span class="val">Searchable &amp; Ready</span></div>
+          <div class="ai-line">&nbsp;</div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="ai-cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULES -->
+<section id="platform">
+  <div class="container">
+    <div class="section-label">Tecsolex Products</div>
+    <h2 class="section-h2">Our<br><span class="grad">Products</span></h2>
+    <p class="section-sub">A suite of purpose-built modules covering every aspect of media production and distribution — deploy what you need, scale as you grow.</p>
+    <div class="modules-grid">
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">🎬</span></div>
+        <div class="module-title">ActionClap</div>
+        <div class="module-desc">A unique product to manage the complete solution for film and TV production. End-to-end production lifecycle management for production houses, channels, and auditors.</div>
+        <div class="module-tag">Flagship</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">📄</span></div>
+        <div class="module-title">Contract & Legal Management</div>
+        <div class="module-desc">Manage contracts of your cast and crew with our contract and legal management software. Full lifecycle from drafting to execution with compliance tracking.</div>
+        <div class="module-tag">Legal</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">🤝</span></div>
+        <div class="module-title">Syndication Sales</div>
+        <div class="module-desc">A collaborative platform uniting Syndication, Finance and OPS teams. Streamline content sales deals, track revenue, and manage buyer relationships in one place.</div>
+        <div class="module-tag">Revenue</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">⚖️</span></div>
+        <div class="module-title">Rights Management</div>
+        <div class="module-desc">Manage all acquisition and music rights with precision. Track ownership, territory windows, expiry dates, and licensing obligations across your entire content library.</div>
+        <div class="module-tag">Core</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">💡</span></div>
+        <div class="module-title">Concept Ideation & Greenlight</div>
+        <div class="module-desc">Centralized management system for all concepts and approval workflows in a collaborative manner. Track ideas from pitch to greenlight with full audit trails.</div>
+        <div class="module-tag">Development</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">🗂️</span></div>
+        <div class="module-title">Content Hub</div>
+        <div class="module-desc">Solving the issue of finding relevant data for syndication sales by providing searchable metadata. Centralized asset repository for your entire content catalogue.</div>
+        <div class="module-tag">Operations</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">🏪</span></div>
+        <div class="module-title">Marketplace</div>
+        <div class="module-desc">An integrated content listing portal for your own content for presales. Connect buyers and sellers in a structured B2B environment for maximum deal velocity.</div>
+        <div class="module-tag">Sales</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">👥</span></div>
+        <div class="module-title">Community</div>
+        <div class="module-desc">A collaborative community platform for media professionals. Network, share insights, and connect across production houses, channels, and the broader media ecosystem.</div>
+        <div class="module-tag">Coming Soon</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🔗</div>
+        <div class="module-title">Enterprise Integrations</div>
+        <div class="module-desc">SAP integrations and third-party solution connectivity. Connect Tecsolex with your existing ERP, finance, and media management systems seamlessly.</div>
+        <div class="module-tag">Infrastructure</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📋</div>
+        <div class="module-title">RO Planner</div>
+        <div class="module-desc">Release order planning and scheduling tool for media operations. Plan, track and optimise broadcast schedules and content release windows across channels and platforms.</div>
+        <div class="module-tag">Planning</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIONCLAP VIDEO -->
+  <div class="container" style="margin-top:60px;padding-bottom:80px">
+    <div class="section-label" style="justify-content:center;margin-bottom:16px">ActionClap in Action</div>
+    <h3 style="font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;color:var(--platinum);text-align:center;margin-bottom:12px">See How <span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">ActionClap</span> Works</h3>
+    <p style="text-align:center;color:var(--silver);font-size:1rem;margin-bottom:36px;max-width:560px;margin-left:auto;margin-right:auto">A complete walkthrough of the ActionClap platform — production management, rights, contracts, syndication and more.</p>
+    <div class="video-wrapper">
+      <iframe
+        src="https://player.vimeo.com/video/680863929?autoplay=0&title=0&byline=0&portrait=0&color=1b4f5a"
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        loading="lazy"
+        title="ActionClap by Tecsolex">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="case-studies" style="background:#f8f9fb">
+  <div class="container">
+    <div class="section-label">Who Uses Tecsolex</div>
+    <h2 class="section-h2">Built for the<br><span class="grad">Media & Entertainment Industry</span></h2>
+    <p class="section-sub">ActionClap is designed for production houses, channels, and media enterprises looking to produce and manage content smarter.</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#1a0533,#2d1b69)">
+          <div class="case-img-bg">🎬</div>
+        </div>
+        <div class="case-body">
+          <div class="case-sector">Production Houses</div>
+          <div class="case-title">Complete TV & Film production management in one platform</div>
+          <div class="case-desc">Production houses use ActionClap to manage the complete solution — from concept ideation and greenlight to cast contracts, music rights, and syndication sales.</div>
+          <div class="case-metric">
+            <div class="case-metric-item"><div class="num">End-to-End</div><div class="lbl">Production control</div></div>
+            <div class="case-metric-item"><div class="num">One</div><div class="lbl">Unified platform</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#0a1628,#1e3a5f)">
+          <div class="case-img-bg">📺</div>
+        </div>
+        <div class="case-body">
+          <div class="case-sector">Channels & Broadcasters</div>
+          <div class="case-title">Rights, contracts, and content operations for broadcast channels</div>
+          <div class="case-desc">Channels rely on Tecsolex's rights management and legal contract system to track acquisition rights, manage talent agreements, and streamline syndication deals.</div>
+          <div class="case-metric">
+            <div class="case-metric-item"><div class="num">Rights</div><div class="lbl">Fully managed</div></div>
+            <div class="case-metric-item"><div class="num">Legal</div><div class="lbl">Contracts automated</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-img" style="background:linear-gradient(135deg,#0d1f0a,#1a3d14)">
+          <div class="case-img-bg">📊</div>
+        </div>
+        <div class="case-body">
+          <div class="case-sector">Production Auditors</div>
+          <div class="case-title">Financial oversight and compliance across productions</div>
+          <div class="case-desc">Production auditors use ActionClap for transparent cost tracking, contract compliance verification, and asset-wise revenue reporting across every production.</div>
+          <div class="case-metric">
+            <div class="case-metric-item"><div class="num">Full</div><div class="lbl">Audit trail</div></div>
+            <div class="case-metric-item"><div class="num">Asset-wise</div><div class="lbl">P&amp;L visibility</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTERPRISE CTA -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="section-label" style="justify-content:center">Enterprise Deployment</div>
+    <h2 class="cta-h2">Speak With Our<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Experts Today</span></h2>
+    <p class="cta-sub">Ready to produce and manage content smarter? Connect with the Tecsolex team and discover how ActionClap can transform your media operations.</p>
+    <div class="cta-actions">
+      <a href="#" data-modal="contact" class="btn-hero">Connect With Us →</a>
+      <a href="#" data-modal="contact" class="btn-hero-ghost" style="display:inline-flex;align-items:center;gap:8px">
+        <span>📞</span> Contact Tecsolex
+      </a>
+    </div>
+    <div class="cta-form">
+      <input type="email" class="cta-input" placeholder="your@company.com">
+      <button class="cta-btn-white">Get Started →</button>
+    </div>
+    <p style="margin-top:16px;font-size:12px;color:var(--dim)">support@tecsolex.com · Lotus Business Park, Malad West, Mumbai 400064</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div style="display:flex;align-items:center">
+          <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNDAgNzUiIHdpZHRoPSIzNDAiIGhlaWdodD0iNzUiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iVGVjc29sZXgiPgogIDxkZWZzPgogICAgPHN0eWxlPgogICAgICAubG9nby10ZXh0IHsgZm9udC1mYW1pbHk6ICdBcmlhbCBCbGFjaycsICdIZWx2ZXRpY2EgTmV1ZScsIEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogOTAwOyBmb250LXNpemU6IDQ2cHg7IH0KICAgICAgLmxvZ28tdGFnICB7IGZvbnQtZmFtaWx5OiBBcmlhbCwgSGVsdmV0aWNhLCBzYW5zLXNlcmlmOyBmb250LXdlaWdodDogNTAwOyBmb250LXNpemU6IDlweDsgbGV0dGVyLXNwYWNpbmc6IDIuNXB4OyB9CiAgICA8L3N0eWxlPgogIDwvZGVmcz4KICA8IS0tIE1haW4gd29yZG1hcmsgLS0+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGV4dCIgeT0iNTIiPgogICAgPHRzcGFuIGZpbGw9IiMxYjRmNWEiPlRFQ1M8L3RzcGFuPjx0c3BhbiBmaWxsPSIjZjQ3OTIwIj5PPC90c3Bhbj48dHNwYW4gZmlsbD0iIzFiNGY1YSI+TEVYPC90c3Bhbj4KICA8L3RleHQ+CiAgPCEtLSBUYWdsaW5lIHJvdyAtLT4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5URUNITk9MT0dZPC90ZXh0PgogIDxjaXJjbGUgY3g9IjkzIiAgY3k9IjY1IiByPSIyIiBmaWxsPSIjZjQ3OTIwIi8+CiAgPHRleHQgY2xhc3M9ImxvZ28tdGFnIiB4PSI5OSIgIHk9IjY4IiBmaWxsPSIjMWI0ZjVhIj5TT0xVVElPTlM8L3RleHQ+CiAgPGNpcmNsZSBjeD0iMTgxIiBjeT0iNjUiIHI9IjIiIGZpbGw9IiNmNDc5MjAiLz4KICA8dGV4dCBjbGFzcz0ibG9nby10YWciIHg9IjE4NyIgeT0iNjgiIGZpbGw9IiMxYjRmNWEiPkVYQ0VMTEVOQ0U8L3RleHQ+Cjwvc3ZnPg==" alt="Tecsolex" style="height:34px;width:auto;filter:brightness(0) invert(1)" onerror="this.outerHTML='<span style=\'font-family:var(--font-head);font-weight:700;font-size:22px;color:#1b4f5a;letter-spacing:-1px\'>TECSOLEX</span>'">
+        </div>
+        <p>AI-native media infrastructure platform for the global entertainment industry.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="X / Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Products</div>
+        <a href="#platform">ActionClap</a>
+        <a href="#platform">Rights Management</a>
+        <a href="#platform">Contract &amp; Legal</a>
+        <a href="#platform">Syndication Sales</a>
+        <a href="#platform">Content Hub</a>
+        <a href="#platform">RO Planner</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Solutions</div>
+        <a href="#case-studies">Production Houses</a>
+        <a href="#case-studies">TV Channels</a>
+        <a href="#case-studies">Broadcasters</a>
+        <a href="#case-studies">Production Auditors</a>
+        <a href="#case-studies">Media Enterprises</a>
+        <a href="#platform">SAP Integration</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Company</div>
+        <a href="#hero">Home</a>
+        <a href="#platform">Products &amp; Services</a>
+        <a href="#case-studies">Our Clients</a>
+        <a href="#" data-modal="contact">Contact Us</a>
+        <a href="#ecosystem">About Tecsolex</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contact</div>
+        <a href="#" data-modal="contact">support@tecsolex.com</a>
+        <a href="#" data-modal="contact">Lotus Business Park</a>
+        <a href="#" data-modal="contact">Malad West, Mumbai 400064</a>
+        <a href="#" data-modal="contact">India</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Tecsolex. All rights reserved. Technology · Solutions · Excellence. | Lotus Business Park, Malad West, Mumbai 400064</p>
+      <div class="footer-links">
+        <a href="#hero">Privacy Policy</a>
+        <a href="#hero">Terms of Service</a>
+        <a href="#hero">Security</a>
+        <a href="#hero">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SCROLL TO TOP -->
+<button id="scrollTop" aria-label="Back to top" title="Back to top">&#8679;</button>
+
+<script>
+// ── GSAP SETUP ───────────────────────────────────────
+gsap.registerPlugin(ScrollTrigger);
+
+// ── NAV SCROLL ───────────────────────────────────────
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  if (s > 40) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+  const btn = document.getElementById('scrollTop');
+  if (btn) { if (s > 600) btn.classList.add('visible'); else btn.classList.remove('visible'); }
+}, { passive: true });
+
+const scrollTopBtn = document.getElementById('scrollTop');
+if (scrollTopBtn) scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// ── HAMBURGER ────────────────────────────────────────
+const hamburger = document.getElementById('navHamburger');
+const mobileNav = document.getElementById('mobileNav');
+function closeMobileNav() {
+  if (hamburger) { hamburger.classList.remove('open'); hamburger.setAttribute('aria-expanded','false'); }
+  if (mobileNav) mobileNav.classList.remove('open');
+  document.body.style.overflow = '';
+}
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMobileNav(); closeModal(); } });
+
+// ── PARTICLES ────────────────────────────────────────
+const canvas = document.getElementById('particles-canvas');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [], W, H;
+  function resizeCanvas() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  class Particle {
+    constructor() { this.reset(); }
+    reset() {
+      this.x = Math.random()*W; this.y = Math.random()*H;
+      this.vx = (Math.random()-0.5)*0.4; this.vy = -(Math.random()*0.4+0.1);
+      this.radius = Math.random()*1.2+0.4;
+      this.alpha = Math.random()*0.35+0.05;
+      this.color = Math.random()>0.5 ? '27,79,90' : '13,124,143';
+    }
+    update() { this.x+=this.vx; this.y+=this.vy; this.alpha-=0.0008; if(this.alpha<=0||this.y<-10) this.reset(); }
+    draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.radius,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.alpha})`; ctx.fill(); }
+  }
+  for(let i=0;i<70;i++) particles.push(new Particle());
+  function animParticles() {
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{p.update();p.draw();});
+    for(let i=0;i<particles.length;i++) for(let j=i+1;j<particles.length;j++) {
+      const dx=particles[i].x-particles[j].x, dy=particles[i].y-particles[j].y, dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<100){ ctx.beginPath(); ctx.moveTo(particles[i].x,particles[i].y); ctx.lineTo(particles[j].x,particles[j].y); ctx.strokeStyle=`rgba(27,79,90,${0.05*(1-dist/100)})`; ctx.lineWidth=0.5; ctx.stroke(); }
+    }
+    requestAnimationFrame(animParticles);
+  }
+  animParticles();
+}
+
+// ── HERO ENTRANCE ────────────────────────────────────
+gsap.timeline({ delay: 0.1 })
+  .from('.hero-badge',   { opacity:0, y:16, duration:0.7, ease:'power3.out' })
+  .from('.hero-h1',      { opacity:0, y:28, duration:0.9, ease:'power3.out' }, '-=0.4')
+  .from('.hero-sub',     { opacity:0, y:18, duration:0.7, ease:'power2.out' }, '-=0.5')
+  .from('.hero-actions', { opacity:0, y:16, duration:0.6, ease:'power2.out' }, '-=0.4')
+  .from('.hero-stat',    { opacity:0, y:12, duration:0.5, stagger:0.1, ease:'power2.out' }, '-=0.3')
+  .from('.floating-badge', { opacity:0, scale:0.85, duration:0.6, stagger:0.15, ease:'back.out(1.7)' }, '-=0.2');
+
+// ── SCROLL REVEAL ────────────────────────────────────
+// Safe reveal: only animate if element not already in viewport
+function safeReveal(elements, fromVars, stOpts) {
+  gsap.utils.toArray(elements).forEach((el, i) => {
+    const rect = el.getBoundingClientRect();
+    const alreadyVisible = rect.top < window.innerHeight * 0.98;
+    if (alreadyVisible) {
+      gsap.set(el, { clearProps: 'all' });
+      return;
+    }
+    const vars = Object.assign({}, fromVars);
+    const stagger = vars.stagger || 0;
+    delete vars.stagger;
+    gsap.from(el, {
+      scrollTrigger: { trigger: el, start: stOpts?.start || 'top 95%', once: true },
+      ...vars,
+      delay: stagger * i,
+      onComplete: function() { gsap.set(el, { clearProps: 'opacity,transform' }); }
+    });
+  });
+}
+
+// Section headers
+safeReveal('.section-label', { opacity:0, y:14, duration:0.6, ease:'power2.out' });
+safeReveal('.section-h2',    { opacity:0, y:22, duration:0.75, ease:'power3.out' });
+safeReveal('.section-sub',   { opacity:0, y:16, duration:0.65, ease:'power2.out' });
+
+// Module cards — specific selector, no :scope
+safeReveal('.module-card',  { opacity:0, y:36, duration:0.65, ease:'power2.out', stagger:0.06 });
+
+// AI feature cards
+safeReveal('.ai-feat',       { opacity:0, y:28, duration:0.6, ease:'power2.out', stagger:0.07 });
+
+// Case cards
+safeReveal('.case-card',     { opacity:0, y:40, duration:0.7, ease:'power2.out', stagger:0.1 });
+
+// Eco features
+safeReveal('.eco-feature',   { opacity:0, x:28, duration:0.65, ease:'power2.out', stagger:0.08 });
+
+// AI terminal
+safeReveal('.ai-terminal',   { opacity:0, x:40, duration:0.9, ease:'power3.out' });
+
+// Video
+safeReveal('.video-wrapper', { opacity:0, y:44, scale:0.97, duration:1, ease:'power3.out' });
+
+// CTA section items
+safeReveal('.cta-h2',     { opacity:0, y:28, duration:0.8, ease:'power3.out' });
+safeReveal('.cta-sub',    { opacity:0, y:20, duration:0.65, ease:'power2.out' });
+safeReveal('.cta-actions',{ opacity:0, y:16, duration:0.6, ease:'power2.out' });
+safeReveal('.cta-form',   { opacity:0, y:12, duration:0.55, ease:'power2.out' });
+
+// ── PARALLAX ─────────────────────────────────────────
+gsap.to('.hero-glow-1', { scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.5}, y:-90, opacity:0 });
+gsap.to('.hero-glow-2', { scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1.5}, y:-70, opacity:0 });
+
+// ── ORBIT ────────────────────────────────────────────
+gsap.to('.eco-ring.r1', { rotation:360,  duration:22, repeat:-1, ease:'none', transformOrigin:'50% 50%' });
+gsap.to('.eco-ring.r2', { rotation:-360, duration:34, repeat:-1, ease:'none', transformOrigin:'50% 50%' });
+gsap.to('.eco-ring.r3', { rotation:360,  duration:48, repeat:-1, ease:'none', transformOrigin:'50% 50%' });
+
+// ── AI TERMINAL TYPEWRITER ───────────────────────────
+ScrollTrigger.create({
+  trigger:'.ai-terminal', start:'top 82%', once:true,
+  onEnter: () => document.querySelectorAll('.ai-line').forEach((l,i) => gsap.from(l,{opacity:0,x:-6,duration:0.3,delay:i*0.11}))
+});
+
+// ── MAP DOTS ─────────────────────────────────────────
+gsap.from('.map-dot', {
+  scrollTrigger:{trigger:'.world-map', start:'top 80%'},
+  scale:0, opacity:0, duration:0.5, stagger:0.12, ease:'back.out(2)'
+});
+
+// ── MOUSE PARALLAX ───────────────────────────────────
+document.addEventListener('mousemove', e => {
+  const mx=(e.clientX/window.innerWidth-0.5)*16, my=(e.clientY/window.innerHeight-0.5)*16;
+  gsap.to('.floating-badge.b1',{x:mx*-0.4,y:my*-0.4,duration:1.2,ease:'power2.out'});
+  gsap.to('.floating-badge.b2',{x:mx*0.55,y:my*0.55,duration:1.4,ease:'power2.out'});
+  gsap.to('.floating-badge.b3',{x:mx*-0.3,y:my*-0.3,duration:1,ease:'power2.out'});
+}, { passive:true });
+
+// ── DATA STREAMS ─────────────────────────────────────
+document.querySelectorAll('.data-stream').forEach((s,i) => {
+  gsap.to(s,{opacity:0.18,duration:0.6,delay:i*0.5,yoyo:true,repeat:-1,repeatDelay:1.8});
+});
+
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    <div id="modalFormWrap">
+      <div class="modal-title">Get in Touch</div>
+      <div class="modal-sub">Tell us about your requirements and we'll connect you with the right team.</div>
+      <form class="modal-form" onsubmit="handleModalSubmit(event)">
+        <div class="field">
+          <label>Full Name *</label>
+          <input type="text" name="name" placeholder="Your full name" required>
+        </div>
+        <div class="field">
+          <label>Company Name *</label>
+          <input type="text" name="company" placeholder="Your company" required>
+        </div>
+        <div class="field">
+          <label>Official Email *</label>
+          <input type="email" name="email" placeholder="you@company.com" required>
+        </div>
+        <div class="field">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" placeholder="+91 98765 43210" required>
+        </div>
+        <span class="check-label">Products of Interest</span>
+        <div class="check-grid">
+          <label class="check-item"><input type="checkbox" name="products" value="ActionClap"><span>ActionClap</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Contract & Legal"><span>Contract &amp; Legal</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Syndication Sales"><span>Syndication Sales</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Rights Management"><span>Rights Management</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Content Hub"><span>Content Hub</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Marketplace"><span>Marketplace</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="RO Planner"><span>RO Planner</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Community"><span>Community</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Enterprise Integrations"><span>Enterprise Integrations</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Concept & Greenlight"><span>Concept &amp; Greenlight</span></label>
+        </div>
+        <button type="submit" class="modal-submit">Send Enquiry &#8594;</button>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess">
+      <div class="tick">&#9989;</div>
+      <h3>Thank you!</h3>
+      <p>We've received your enquiry and will get back to you within 24 hours.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal(){document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
+document.getElementById('contactModal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+function handleModalSubmit(e){
+  e.preventDefault();
+  document.getElementById('modalFormWrap').style.display='none';
+  document.getElementById('modalSuccess').style.display='block';
+  setTimeout(closeModal,3200);
+}
+document.querySelectorAll('[data-modal]').forEach(function(el){
+  el.addEventListener('click',function(e){e.preventDefault();if(typeof closeMobileNav==='function')closeMobileNav();openModal();});
+});
+</script>
+
+</body>
+</html>
+                   
