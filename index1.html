@@ -352,42 +352,6 @@ nav{height:60px}
 .module-card,.ai-feat,.case-card,.eco-feature,.eco-node{opacity:1}
 /* GSAP will set opacity:0 before animating — this ensures fallback if JS fails */
 
-/* ── NEW SECTIONS RESPONSIVE ────────────────────────── */
-@media(max-width:768px){
-  /* RightsK grid */
-  [style*="grid-template-columns:repeat(2,1fr)"].rightsk-grid{grid-template-columns:1fr !important}
-  /* PlanAR 2-col */
-  .planar-grid{grid-template-columns:1fr !important}
-  /* Ad sales grid */
-  .adsales-grid{grid-template-columns:1fr !important}
-  /* Marketplace pipeline */
-  .mkt-pipeline{flex-direction:column !important;align-items:center !important}
-  /* Deep section padding */
-  [style*="padding:56px 48px"]{padding:36px 24px !important}
-}
-@media(max-width:480px){
-  [style*="padding:56px 48px"]{padding:28px 18px !important}
-}
-/* Apply grid classes via JS-free approach — inline style grids respond via container queries */
-@media(max-width:700px){
-  /* Force single column for all inline-grid sections on small screens */
-  .container [style*="display:grid;grid-template-columns:1fr 1fr"]{
-    grid-template-columns:1fr !important;
-  }
-  .container [style*="display:grid;grid-template-columns:repeat(2,1fr)"]{
-    grid-template-columns:1fr !important;
-  }
-  /* Marketplace pipeline vertical */
-  .container [style*="display:flex;align-items:flex-start;gap:0"]{
-    flex-direction:column !important;
-    align-items:center !important;
-  }
-}
-/* Modules grid responsive for 12 cards */
-@media(max-width:1100px){.modules-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){.modules-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:480px){.modules-grid{grid-template-columns:1fr}}
-
 </style>
 </head>
 <body>
@@ -439,35 +403,30 @@ nav{height:60px}
   <div class="hero-content" id="hero-content">
     <div class="hero-badge">
       <div class="hero-badge-dot"></div>
-      <span>Enterprise Media Solutions · Content to Revenue</span>
+      <span>Innovative Media Solution for TV &amp; Film</span>
     </div>
     <h1 class="hero-h1">
-      From Content Ideation<br>
-      <span class="grad">to Revenue Realization</span>
+      Produce &amp; Manage<br>
+      <span class="grad">Content Smartly</span>
     </h1>
     <p class="hero-sub">
-      Tecsolex delivers powerful, end-to-end enterprise platforms for broadcasters, content owners, and production houses — covering rights, contracts, syndication, ad sales, and AI-driven automation in one unified ecosystem.
+      Tecsolex is a media solution company delivering innovative enterprise platforms for TV &amp; film production management — covering rights, contracts, syndication, content operations and distribution in one unified system.
     </p>
     <div class="hero-actions">
       <a href="#" data-modal="contact" class="btn-hero">Connect With Us →</a>
       <a href="#platform" class="btn-hero-ghost">
-        <span>▶</span> Explore Our Products
+        <span>▶</span> Explore ActionClap
       </a>
     </div>
     <div class="hero-stats">
       <div class="hero-stat">
-        <div class="hero-stat-num">100+</div>
-        <div class="hero-stat-label">Years Cumulative M&amp;E Expertise</div>
+        <div class="hero-stat-num">TV &amp; Film</div>
+        <div class="hero-stat-label">Production Focus</div>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
-        <div class="hero-stat-num">End-to-End</div>
-        <div class="hero-stat-label">Media Enterprise Platform</div>
-      </div>
-      <div class="hero-divider"></div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">AI/ML</div>
-        <div class="hero-stat-label">Driven Automation</div>
+        <div class="hero-stat-num">Enterprise</div>
+        <div class="hero-stat-label">Grade Solution</div>
       </div>
       <div class="hero-divider"></div>
       <div class="hero-stat">
@@ -505,9 +464,9 @@ nav{height:60px}
 <!-- ECOSYSTEM -->
 <section id="ecosystem">
   <div class="container">
-    <div class="section-label">Who We Are</div>
-    <h2 class="section-h2">Powerful, End-to-End<br><span class="grad">Media Solutions</span></h2>
-    <p class="section-sub">Founded by passionate media professionals and backed by industry and technology experts, Tecsolex delivers powerful, end-to-end solutions for broadcasters, content owners, and production houses. We continuously integrate technological advancements and evolving business trends, ensuring our enterprise-grade solutions meet all operational, functional, and analytical needs across the media ecosystem.</p>
+    <div class="section-label">Our Platform</div>
+    <h2 class="section-h2">One Platform.<br><span class="grad">Every Media Operation.</span></h2>
+    <p class="section-sub">Tecsolex delivers innovative enterprise solutions for TV &amp; film production management — covering every workflow from greenlight to syndication.</p>
     <div class="ecosystem-grid">
       <div class="ecosystem-visual">
         <div class="eco-ring r1"></div>
@@ -551,31 +510,31 @@ nav{height:60px}
       <div class="eco-features">
         <div class="eco-feature">
           <div class="eco-feature-header">
-            <div class="eco-feature-icon">👥</div>
-            <div class="eco-feature-title">Highly Skilled Team</div>
+            <div class="eco-feature-icon">💡</div>
+            <div class="eco-feature-title">Passion for Innovation</div>
           </div>
-          <div class="eco-feature-desc">Solution Architects, Engineers, and Project Managers with over 100 years of cumulative experience in Media &amp; Entertainment — bringing deep domain expertise to every engagement.</div>
-        </div>
-        <div class="eco-feature">
-          <div class="eco-feature-header">
-            <div class="eco-feature-icon">🤖</div>
-            <div class="eco-feature-title">AI/ML-Driven Capabilities</div>
-          </div>
-          <div class="eco-feature-desc">We accelerate automation and decision-making using AI/ML — from intelligent ad spot allocation and music cue sheet detection to contract clause validation and rights analytics.</div>
+          <div class="eco-feature-desc">We improve client experiences by bringing feature-rich innovative solutions that increase productivity and efficiency across every media workflow.</div>
         </div>
         <div class="eco-feature">
           <div class="eco-feature-header">
             <div class="eco-feature-icon">🏗️</div>
-            <div class="eco-feature-title">Enterprise-Grade Solutions</div>
+            <div class="eco-feature-title">Enterprise Solution</div>
           </div>
-          <div class="eco-feature-desc">Purpose-built for broadcasters, production houses, and content owners — with SAP integrations, Traffic, DAM, and full cross-functional workflow coverage across Ops, Finance, Legal, and Syndication.</div>
+          <div class="eco-feature-desc">We design enterprise solutions for media &amp; entertainment businesses including SAP integrations and other third-party ecosystem connections.</div>
         </div>
         <div class="eco-feature">
           <div class="eco-feature-header">
-            <div class="eco-feature-icon">📈</div>
-            <div class="eco-feature-title">Revenue-Focused Outcomes</div>
+            <div class="eco-feature-icon">🎯</div>
+            <div class="eco-feature-title">Rich Experience</div>
           </div>
-          <div class="eco-feature-desc">From requisition-to-procurement controls and spend analytics to content marketplace monetization and ad sales optimization — every module is built to drive measurable business outcomes.</div>
+          <div class="eco-feature-desc">Deep expertise in media technology — from intuitive user interfaces to complex backend workflows — built by a team that understands the entertainment industry.</div>
+        </div>
+        <div class="eco-feature">
+          <div class="eco-feature-header">
+            <div class="eco-feature-icon">🏆</div>
+            <div class="eco-feature-title">Result Oriented Team</div>
+          </div>
+          <div class="eco-feature-desc">An organisation focused on outcomes — delivering measurable results alongside the process used to produce a product or deliver a service to media clients.</div>
         </div>
       </div>
     </div>
@@ -586,39 +545,39 @@ nav{height:60px}
 <section class="ai-rights" id="ai-intelligence">
   <div class="container">
     <div class="section-label">Intelligent Media Operations</div>
-    <h2 class="section-h2"><span class="grad2">AI-Powered Automation</span><br>Across Every Workflow</h2>
-    <p class="section-sub">Tecsolex integrates AI/ML at the core — automating rights validation, contract cycle times, music cue sheet generation, and ad spot optimization to help media enterprises operate faster and smarter.</p>
+    <h2 class="section-h2"><span class="grad2">Smart Automation</span><br>for Media Enterprises</h2>
+    <p class="section-sub">Tecsolex brings outcome-oriented intelligence to every media workflow — from contract management and rights tracking to syndication sales and content distribution.</p>
     <div class="ai-grid">
       <div class="ai-features-grid">
         <div class="ai-feat">
-          <div class="ai-feat-icon">🎵</div>
-          <div class="ai-feat-title">AI Cue Sheet (PlanAR)</div>
-          <div class="ai-feat-desc">Automate cue sheet creation from actual audio/video. Detect, validate ownership against Music Rights, and submit society-ready reports with &lt;24hr turnaround.</div>
-        </div>
-        <div class="ai-feat">
           <div class="ai-feat-icon">📄</div>
-          <div class="ai-feat-title">AI-Assisted Contracts</div>
-          <div class="ai-feat-desc">Template selection, clause validation against rights constraints, automated approval routing to Legal/Finance — cutting contract cycle times significantly.</div>
-        </div>
-        <div class="ai-feat">
-          <div class="ai-feat-icon">📡</div>
-          <div class="ai-feat-title">Spot Optimization</div>
-          <div class="ai-feat-desc">AI intelligently allocates ad spots to maximize yield and ROI for advertisers — with real-time visibility into targets, deals, and delivery performance.</div>
+          <div class="ai-feat-title">Legal Management</div>
+          <div class="ai-feat-desc">Manage cast &amp; crew contracts end-to-end. Automated drafting, approval workflows, execution and obligation tracking.</div>
         </div>
         <div class="ai-feat">
           <div class="ai-feat-icon">⚖️</div>
-          <div class="ai-feat-title">Rights Leakage Prevention</div>
-          <div class="ai-feat-desc">Eliminate overlapping rights sales, detect missed renewal windows, auto-validate deals against territory and licensing constraints in real time.</div>
+          <div class="ai-feat-title">Rights Intelligence</div>
+          <div class="ai-feat-desc">Track all acquisition and music rights. Automated alerts for expiry, renewals, and territory conflicts.</div>
         </div>
         <div class="ai-feat">
-          <div class="ai-feat-icon">📊</div>
-          <div class="ai-feat-title">Spend & Savings Analytics</div>
-          <div class="ai-feat-desc">Category-level spend breakdowns, YoY trend analysis, supplier concentration, and negotiated savings tracking with department-level allocation.</div>
+          <div class="ai-feat-icon">🔍</div>
+          <div class="ai-feat-title">Searchable Metadata</div>
+          <div class="ai-feat-desc">Content Hub solves the challenge of finding relevant data for syndication sales with fully searchable asset metadata.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">💡</div>
+          <div class="ai-feat-title">Concept Workflow</div>
+          <div class="ai-feat-desc">Centralized concept ideation and greenlight approval system — collaborate across teams from pitch to production start.</div>
+        </div>
+        <div class="ai-feat">
+          <div class="ai-feat-icon">🤝</div>
+          <div class="ai-feat-title">OPS Collaboration</div>
+          <div class="ai-feat-desc">Syndication, Finance and OPS teams work on one platform — eliminating silos, emails, and manual reconciliation.</div>
         </div>
         <div class="ai-feat">
           <div class="ai-feat-icon">🏪</div>
-          <div class="ai-feat-title">Marketplace-Driven Revenue</div>
-          <div class="ai-feat-desc">Publish entire catalog with rich metadata. AI validates availability instantly and tracks pipeline from first contact to signed contract — turning passive assets into revenue.</div>
+          <div class="ai-feat-title">Presales Marketplace</div>
+          <div class="ai-feat-desc">Integrated content listing portal enabling presales of your own content to buyers before production completes.</div>
         </div>
       </div>
       <div class="ai-terminal">
@@ -627,23 +586,21 @@ nav{height:60px}
           <span>Tecsolex AI Engine · Live</span>
         </div>
         <div class="ai-term-body">
-          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">rightsk.scan</span> <span class="val">"Library_Q2_2026"</span></div>
-          <div class="ai-line"><span class="output">  Scanning 1,240 content rights...</span></div>
-          <div class="ai-line"><span class="success">  ✓ 1,218 rights: Compliant</span></div>
-          <div class="ai-line"><span class="warn">  ⚠ 14 rights: Renewal window open</span></div>
-          <div class="ai-line"><span class="warn">  ⚠ 8 rights: Overlapping territory detected</span></div>
-          <div class="ai-line"><span class="output">  Action queued: </span><span class="val">Renegotiate / Resolve</span></div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">actionclap.rights</span> <span class="val">"Music_Acquisition_Q2"</span></div>
+          <div class="ai-line"><span class="output">  Scanning acquisition &amp; music rights...</span></div>
+          <div class="ai-line"><span class="success">  ✓ Rights verified: Compliant</span></div>
+          <div class="ai-line"><span class="warn">  ⚠ 2 rights: Renewal window open</span></div>
+          <div class="ai-line"><span class="output">  Recommended action: </span><span class="val">Renegotiate</span></div>
           <div class="ai-line">&nbsp;</div>
-          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">planar.cuesheet</span> <span class="val">"Episode_S03E07.mp4"</span></div>
-          <div class="ai-line"><span class="output">  Detecting music usage via AI...</span></div>
-          <div class="ai-line"><span class="success">  ✓ 97.2% automated detection coverage</span></div>
-          <div class="ai-line"><span class="success">  ✓ Cue sheet ready — turnaround: 18hrs</span></div>
-          <div class="ai-line"><span class="output">  Society submission: </span><span class="val">Pre-filled &amp; Ready</span></div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">contracts.review</span> <span class="val">"Cast_Crew_Bundle"</span></div>
+          <div class="ai-line"><span class="output">  Processing cast &amp; crew contracts...</span></div>
+          <div class="ai-line"><span class="success">  ✓ 47 contracts: Executed</span></div>
+          <div class="ai-line"><span class="output">  Compliance: </span><span class="val">100% Clear</span></div>
           <div class="ai-line">&nbsp;</div>
-          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">adSales.optimize</span> <span class="val">--channel=prime --live</span></div>
-          <div class="ai-line"><span class="output">  Running spot optimization AI...</span></div>
-          <div class="ai-line"><span class="success">  ✓ Yield improved: +23% vs manual plan</span></div>
-          <div class="ai-line"><span class="output">  Promo slots: </span><span class="val">Prioritized &amp; Scheduled</span></div>
+          <div class="ai-line"><span class="prompt">›</span> <span class="cmd">syndication.pipeline</span> <span class="val">--live</span></div>
+          <div class="ai-line"><span class="output">  Finance &amp; OPS team sync...</span></div>
+          <div class="ai-line"><span class="success">  ✓ 12 deals active in marketplace</span></div>
+          <div class="ai-line"><span class="output">  Content Hub: </span><span class="val">Searchable &amp; Ready</span></div>
           <div class="ai-line">&nbsp;</div>
           <div class="ai-line"><span class="prompt">›</span> <span class="ai-cursor"></span></div>
         </div>
@@ -656,240 +613,68 @@ nav{height:60px}
 <section id="platform">
   <div class="container">
     <div class="section-label">Tecsolex Products</div>
-    <h2 class="section-h2">A Complete Suite for<br><span class="grad">Media &amp; Entertainment</span></h2>
-    <p class="section-sub">Purpose-built modules covering every aspect of media operations — from production management and rights to ad sales, AI automation, and commercial procurement. Deploy what you need, scale as you grow.</p>
+    <h2 class="section-h2">Our<br><span class="grad">Products</span></h2>
+    <p class="section-sub">A suite of purpose-built modules covering every aspect of media production and distribution — deploy what you need, scale as you grow.</p>
     <div class="modules-grid">
       <div class="module-card">
         <div class="module-icon"><span style="font-size:26px;line-height:1">🎬</span></div>
         <div class="module-title">ActionClap</div>
-        <div class="module-desc">End-to-end production lifecycle management for film and TV. Covers concept ideation, greenlight, cast/crew contracts, production budgets, rights, and syndication — all in one platform.</div>
+        <div class="module-desc">A unique product to manage the complete solution for film and TV production. End-to-end production lifecycle management for production houses, channels, and auditors.</div>
         <div class="module-tag">Flagship</div>
       </div>
       <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">⚖️</span></div>
-        <div class="module-title">RightsK</div>
-        <div class="module-desc">A centralized rights engine to eliminate leakage, reduce latency, and unlock revenue from expiring content rights. Detects overlapping rights, missed renewals, delayed validations, and music royalty exposure automatically.</div>
-        <div class="module-tag">Core</div>
-      </div>
-      <div class="module-card">
         <div class="module-icon"><span style="font-size:26px;line-height:1">📄</span></div>
-        <div class="module-title">Contract &amp; Legal Management</div>
-        <div class="module-desc">AI-assisted contract lifecycle — template selection, clause validation against rights constraints, approval routing to Legal/Finance, and real-time RMS sync upon execution. Cut cycle times dramatically.</div>
+        <div class="module-title">Contract & Legal Management</div>
+        <div class="module-desc">Manage contracts of your cast and crew with our contract and legal management software. Full lifecycle from drafting to execution with compliance tracking.</div>
         <div class="module-tag">Legal</div>
-      </div>
-      <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">📡</span></div>
-        <div class="module-title">Ad Sales &amp; Programming</div>
-        <div class="module-desc">Holistic ad sales ecosystem: Spot Optimization (AI-driven yield maximization), Sales Performance (real-time deal tracking), Promo Planner (scheduling &amp; prioritization), and unified Analytics dashboards.</div>
-        <div class="module-tag">Revenue</div>
-      </div>
-      <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">🎵</span></div>
-        <div class="module-title">PlanAR – AI Cuesheet</div>
-        <div class="module-desc">Automate music cue sheet generation using AI. Ingest content, detect music usage, validate ownership against your Music Rights module, and submit society-ready reports — with &lt;24hr turnaround and 95–98% automated detection coverage.</div>
-        <div class="module-tag">AI-Powered</div>
       </div>
       <div class="module-card">
         <div class="module-icon"><span style="font-size:26px;line-height:1">🤝</span></div>
         <div class="module-title">Syndication Sales</div>
-        <div class="module-desc">A collaborative platform uniting Syndication, Finance, and OPS teams. Streamline content sales deals, track revenue, manage buyer relationships, and eliminate silos in one unified system.</div>
-        <div class="module-tag">Sales</div>
+        <div class="module-desc">A collaborative platform uniting Syndication, Finance and OPS teams. Streamline content sales deals, track revenue, and manage buyer relationships in one place.</div>
+        <div class="module-tag">Revenue</div>
       </div>
       <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">🏪</span></div>
-        <div class="module-title">Marketplace</div>
-        <div class="module-desc">Publish your entire catalog with rich metadata. The marketplace generates inbound leads, validates availability instantly, and tracks pipeline from first contact to signed contract — turning passive assets into active revenue.</div>
-        <div class="module-tag">Monetization</div>
-      </div>
-      <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">🛒</span></div>
-        <div class="module-title">Commercial Process Optimisation</div>
-        <div class="module-desc">Structured commercial management — requisition-to-procure controls, budgeting workflows, vendor onboarding, centralized bill desk, and services/products comparison. Full spend &amp; savings analytics by category, supplier, and department.</div>
-        <div class="module-tag">Procurement</div>
-      </div>
-      <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">🎥</span></div>
-        <div class="module-title">Production Management System</div>
-        <div class="module-desc">Capture and monitor content production budgets and daily spends. Highlight budget vs cost variances in real time — giving production heads, channels, and auditors full financial visibility throughout the shoot.</div>
-        <div class="module-tag">Production</div>
+        <div class="module-icon"><span style="font-size:26px;line-height:1">⚖️</span></div>
+        <div class="module-title">Rights Management</div>
+        <div class="module-desc">Manage all acquisition and music rights with precision. Track ownership, territory windows, expiry dates, and licensing obligations across your entire content library.</div>
+        <div class="module-tag">Core</div>
       </div>
       <div class="module-card">
         <div class="module-icon"><span style="font-size:26px;line-height:1">💡</span></div>
-        <div class="module-title">Concept Ideation &amp; Greenlight</div>
-        <div class="module-desc">Centralized management system for all concepts and approval workflows. Track ideas from pitch to greenlight with collaborative review, stakeholder comments, and full audit trails.</div>
+        <div class="module-title">Concept Ideation & Greenlight</div>
+        <div class="module-desc">Centralized management system for all concepts and approval workflows in a collaborative manner. Track ideas from pitch to greenlight with full audit trails.</div>
         <div class="module-tag">Development</div>
       </div>
       <div class="module-card">
         <div class="module-icon"><span style="font-size:26px;line-height:1">🗂️</span></div>
         <div class="module-title">Content Hub</div>
-        <div class="module-desc">Unified platform for Title, Metadata, Acquisition, and Syndication management. Fully searchable asset repository that solves the challenge of finding relevant content data for syndication sales.</div>
+        <div class="module-desc">Solving the issue of finding relevant data for syndication sales by providing searchable metadata. Centralized asset repository for your entire content catalogue.</div>
         <div class="module-tag">Operations</div>
       </div>
       <div class="module-card">
-        <div class="module-icon"><span style="font-size:26px;line-height:1">📋</span></div>
+        <div class="module-icon"><span style="font-size:26px;line-height:1">🏪</span></div>
+        <div class="module-title">Marketplace</div>
+        <div class="module-desc">An integrated content listing portal for your own content for presales. Connect buyers and sellers in a structured B2B environment for maximum deal velocity.</div>
+        <div class="module-tag">Sales</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon"><span style="font-size:26px;line-height:1">👥</span></div>
+        <div class="module-title">Community</div>
+        <div class="module-desc">A collaborative community platform for media professionals. Network, share insights, and connect across production houses, channels, and the broader media ecosystem.</div>
+        <div class="module-tag">Coming Soon</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">🔗</div>
+        <div class="module-title">Enterprise Integrations</div>
+        <div class="module-desc">SAP integrations and third-party solution connectivity. Connect Tecsolex with your existing ERP, finance, and media management systems seamlessly.</div>
+        <div class="module-tag">Infrastructure</div>
+      </div>
+      <div class="module-card">
+        <div class="module-icon">📋</div>
         <div class="module-title">RO Planner</div>
-        <div class="module-desc">Release order planning and scheduling tool for broadcast operations. Plan, track, and optimise content release windows across channels and platforms with full visibility.</div>
+        <div class="module-desc">Release order planning and scheduling tool for media operations. Plan, track and optimise broadcast schedules and content release windows across channels and platforms.</div>
         <div class="module-tag">Planning</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHTSK DEEP DIVE -->
-  <div class="container" style="margin-top:80px">
-    <div style="background:linear-gradient(135deg,#0d1f2d 0%,#1b4f5a 100%);border-radius:24px;padding:56px 48px;position:relative;overflow:hidden">
-      <div style="position:absolute;top:-40%;right:-10%;width:400px;height:400px;background:radial-gradient(ellipse,rgba(13,124,143,0.25) 0%,transparent 70%);pointer-events:none"></div>
-      <div style="position:relative;z-index:1">
-        <div class="section-label" style="color:#0d7c8f;margin-bottom:12px">RightsK — Rights Intelligence Engine</div>
-        <h3 style="font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.02em;color:#f0f4f8;margin-bottom:14px;line-height:1.15">Eliminate Rights Leakage.<br>Unlock Revenue from Expiring Content.</h3>
-        <p style="color:rgba(240,244,248,0.7);font-size:1rem;margin-bottom:44px;max-width:620px;line-height:1.75">RightsK is a centralized rights engine that eliminates leakage, reduces latency, and helps media enterprises proactively manage their entire content rights portfolio.</p>
-        <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px">
-            <div style="font-size:22px;margin-bottom:10px">🔀</div>
-            <div style="font-family:var(--font-head);font-size:14px;font-weight:600;color:#f0f4f8;margin-bottom:8px">Overlapping Rights Sales</div>
-            <div style="font-size:13px;color:rgba(240,244,248,0.6);line-height:1.65">Invalid or conflicting license terms expose your company to legal and financial liability when multiple parties claim the same window. RightsK detects and blocks these conflicts before they happen.</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px">
-            <div style="font-size:22px;margin-bottom:10px">⏰</div>
-            <div style="font-family:var(--font-head);font-size:14px;font-weight:600;color:#f0f4f8;margin-bottom:8px">Missed Renewal Windows</div>
-            <div style="font-size:13px;color:rgba(240,244,248,0.6);line-height:1.65">Expiring agreements go unnoticed until it's too late — resulting in content going dark or expensive renegotiations under pressure. Automated alerts ensure you never miss a renewal window.</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px">
-            <div style="font-size:22px;margin-bottom:10px">⚡</div>
-            <div style="font-family:var(--font-head);font-size:14px;font-weight:600;color:#f0f4f8;margin-bottom:8px">Delayed Validations</div>
-            <div style="font-size:13px;color:rgba(240,244,248,0.6);line-height:1.65">Manual checks slow deal velocity, causing lost opportunities and frustrated business development teams chasing approvals. RightsK automates validation so deals close faster.</div>
-          </div>
-          <div style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:22px">
-            <div style="font-size:22px;margin-bottom:10px">🎵</div>
-            <div style="font-family:var(--font-head);font-size:14px;font-weight:600;color:#f0f4f8;margin-bottom:8px">Music Royalty Exposure</div>
-            <div style="font-size:13px;color:rgba(240,244,248,0.6);line-height:1.65">Inadequate cue sheet tracking and ownership validation create audit risk and payment disputes with music rights holders. Integrated with PlanAR for end-to-end music rights compliance.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MARKETPLACE PIPELINE -->
-  <div class="container" style="margin-top:80px">
-    <div class="section-label">Marketplace — Content Monetization</div>
-    <h3 style="font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.02em;color:#0f172a;margin-bottom:14px;line-height:1.15">Turn Your Catalog Into<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Active Revenue</span></h3>
-    <p style="color:#475569;font-size:1rem;margin-bottom:48px;max-width:600px;line-height:1.75">Publish your entire catalog with rich metadata. The marketplace generates inbound leads, validates availability instantly, and tracks pipeline from first contact to signed contract.</p>
-    <div style="display:flex;align-items:flex-start;gap:0;overflow-x:auto;padding-bottom:8px">
-      <div style="flex:1;min-width:160px;text-align:center;position:relative">
-        <div style="width:56px;height:56px;background:var(--grad1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;box-shadow:0 4px 16px rgba(27,79,90,0.3)">📚</div>
-        <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px">Catalog Exposure</div>
-        <div style="font-size:12px;color:#64748b;line-height:1.5;max-width:140px;margin:0 auto">Rich metadata published to qualified buyers</div>
-        <div style="position:absolute;top:28px;right:-12px;width:24px;height:2px;background:var(--grad1);display:none" class="pipe-arrow"></div>
-      </div>
-      <div style="display:flex;align-items:center;padding-top:28px;color:#0d7c8f;font-size:18px;flex-shrink:0;margin:0 4px">→</div>
-      <div style="flex:1;min-width:160px;text-align:center">
-        <div style="width:56px;height:56px;background:rgba(27,79,90,0.1);border:2px solid rgba(27,79,90,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">🎯</div>
-        <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px">Qualified Leads</div>
-        <div style="font-size:12px;color:#64748b;line-height:1.5;max-width:140px;margin:0 auto">Verified buyers matched to content availability</div>
-      </div>
-      <div style="display:flex;align-items:center;padding-top:28px;color:#0d7c8f;font-size:18px;flex-shrink:0;margin:0 4px">→</div>
-      <div style="flex:1;min-width:160px;text-align:center">
-        <div style="width:56px;height:56px;background:rgba(27,79,90,0.1);border:2px solid rgba(27,79,90,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">✅</div>
-        <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px">Availability Check</div>
-        <div style="font-size:12px;color:#64748b;line-height:1.5;max-width:140px;margin:0 auto">Instant rights validation against territory &amp; windows</div>
-      </div>
-      <div style="display:flex;align-items:center;padding-top:28px;color:#0d7c8f;font-size:18px;flex-shrink:0;margin:0 4px">→</div>
-      <div style="flex:1;min-width:160px;text-align:center">
-        <div style="width:56px;height:56px;background:rgba(27,79,90,0.1);border:2px solid rgba(27,79,90,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px">🤝</div>
-        <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px">Negotiation</div>
-        <div style="font-size:12px;color:#64748b;line-height:1.5;max-width:140px;margin:0 auto">Deal terms structured with AI-assisted contracts</div>
-      </div>
-      <div style="display:flex;align-items:center;padding-top:28px;color:#0d7c8f;font-size:18px;flex-shrink:0;margin:0 4px">→</div>
-      <div style="flex:1;min-width:160px;text-align:center">
-        <div style="width:56px;height:56px;background:var(--grad1);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:20px;box-shadow:0 4px 16px rgba(27,79,90,0.3)">💰</div>
-        <div style="font-family:var(--font-head);font-size:13px;font-weight:700;color:#0f172a;margin-bottom:6px">Deals Conversion</div>
-        <div style="font-size:12px;color:#64748b;line-height:1.5;max-width:140px;margin:0 auto">Signed contracts update RMS availability in real time</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AD SALES & PROGRAMMING -->
-  <div class="container" style="margin-top:80px">
-    <div class="section-label">Ad Sales &amp; Programming</div>
-    <h3 style="font-family:var(--font-head);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:700;letter-spacing:-0.02em;color:#0f172a;margin-bottom:14px;line-height:1.15">Intelligence-Driven<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Ad Sales Ecosystem</span></h3>
-    <p style="color:#475569;font-size:1rem;margin-bottom:44px;max-width:620px;line-height:1.75">A holistic, scalable ecosystem designed to optimize ad operations, enhance monetization, and elevate channel performance through AI-powered automation and unified analytics.</p>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:900px">
-      <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out)" onmouseenter="this.style.borderColor='#1b4f5a';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(27,79,90,0.13)'" onmouseleave="this.style.borderColor='#e2e8f0';this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:rgba(27,79,90,0.08);border:1.5px solid rgba(27,79,90,0.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📡</div>
-          <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#0f172a">Spot Optimization</div>
-        </div>
-        <div style="font-size:13px;color:#475569;line-height:1.7">Leverages AI to intelligently allocate ad spots, ensuring maximum yield and improved ROI for advertisers. Automatically balances inventory, demand, and pricing to optimize every break.</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out)" onmouseenter="this.style.borderColor='#1b4f5a';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(27,79,90,0.13)'" onmouseleave="this.style.borderColor='#e2e8f0';this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:rgba(27,79,90,0.08);border:1.5px solid rgba(27,79,90,0.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">🎯</div>
-          <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#0f172a">Sales Performance</div>
-        </div>
-        <div style="font-size:13px;color:#475569;line-height:1.7">Empowers sales teams with real-time visibility into targets, deals, and delivery. Enables smarter decisions, stronger client outcomes, and proactive pipeline management across channels.</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out)" onmouseenter="this.style.borderColor='#1b4f5a';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(27,79,90,0.13)'" onmouseleave="this.style.borderColor='#e2e8f0';this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:rgba(27,79,90,0.08);border:1.5px solid rgba(27,79,90,0.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📢</div>
-          <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#0f172a">Promo Planner</div>
-        </div>
-        <div style="font-size:13px;color:#475569;line-height:1.7">Streamlines the scheduling and prioritization of channel promos. Helps networks amplify show reach, strengthen audience engagement, and ensure the right promotional content airs at the right time.</div>
-      </div>
-      <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:16px;padding:28px;box-shadow:var(--shadow-sm);transition:all 0.3s var(--ease-out)" onmouseenter="this.style.borderColor='#1b4f5a';this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 48px rgba(27,79,90,0.13)'" onmouseleave="this.style.borderColor='#e2e8f0';this.style.transform='';this.style.boxShadow='var(--shadow-sm)'">
-        <div style="display:flex;align-items:center;gap:14px;margin-bottom:14px">
-          <div style="width:46px;height:46px;background:rgba(27,79,90,0.08);border:1.5px solid rgba(27,79,90,0.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0">📊</div>
-          <div style="font-family:var(--font-head);font-size:15px;font-weight:700;color:#0f172a">Unified Analytics</div>
-        </div>
-        <div style="font-size:13px;color:#475569;line-height:1.7">Unifies insights across programming, sales, traffic, and promos — providing actionable dashboards and predictive intelligence for data-driven leadership decisions across the channel.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PLANAR AI CUESHEET -->
-  <div class="container" style="margin-top:80px;margin-bottom:20px">
-    <div style="background:#f8f9fb;border:1.5px solid #e2e8f0;border-radius:24px;padding:56px 48px">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center">
-        <div>
-          <div class="section-label" style="margin-bottom:14px">PlanAR — AI Music Cuesheet</div>
-          <h3 style="font-family:var(--font-head);font-size:clamp(1.5rem,3vw,2.2rem);font-weight:700;letter-spacing:-0.02em;color:#0f172a;margin-bottom:16px;line-height:1.15">Detect, Validate &amp; Report<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Music Usage Automatically</span></h3>
-          <p style="color:#475569;font-size:0.97rem;margin-bottom:28px;line-height:1.75">Automate cue sheet creation from actual audio/video. Validate ownership against your Music Rights module and submit society-ready reports to protect revenue and reduce risk.</p>
-          <div style="display:flex;flex-direction:column;gap:12px">
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:8px;height:8px;background:#0d7c8f;border-radius:50%;flex-shrink:0"></div>
-              <span style="font-size:13.5px;color:#334155"><strong>Cue sheet turnaround</strong> under 24 hours for taped content, 48 hours for live</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:8px;height:8px;background:#0d7c8f;border-radius:50%;flex-shrink:0"></div>
-              <span style="font-size:13.5px;color:#334155"><strong>95–98% automated detection</strong> coverage with &lt;5% manual edits</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:8px;height:8px;background:#0d7c8f;border-radius:50%;flex-shrink:0"></div>
-              <span style="font-size:13.5px;color:#334155"><strong>Society-ready outputs</strong> with track, timecode, duration, and usage type pre-filled</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:12px">
-              <div style="width:8px;height:8px;background:#0d7c8f;border-radius:50%;flex-shrink:0"></div>
-              <span style="font-size:13.5px;color:#334155"><strong>Finance handoff files</strong> for royalty allocation and accruals</span>
-            </div>
-          </div>
-        </div>
-                <div style="display:flex;flex-direction:column;gap:14px">
-          <div style="font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#64748b;margin-bottom:4px">AI Processing Pipeline</div>
-          <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm)">
-            <div style="width:36px;height:36px;background:rgba(27,79,90,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">📥</div>
-            <div><div style="font-size:13px;font-weight:600;color:#0f172a">Ingest</div><div style="font-size:12px;color:#64748b">Content file received &amp; queued for analysis</div></div>
-          </div>
-          <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm)">
-            <div style="width:36px;height:36px;background:rgba(27,79,90,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🔍</div>
-            <div><div style="font-size:13px;font-weight:600;color:#0f172a">Detect</div><div style="font-size:12px;color:#64748b">AI fingerprints music usage with timecodes</div></div>
-          </div>
-          <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm)">
-            <div style="width:36px;height:36px;background:rgba(27,79,90,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">🆔</div>
-            <div><div style="font-size:13px;font-weight:600;color:#0f172a">Identify</div><div style="font-size:12px;color:#64748b">Track matched to music rights database</div></div>
-          </div>
-          <div style="background:#fff;border:1.5px solid #e2e8f0;border-radius:12px;padding:16px 20px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-sm)">
-            <div style="width:36px;height:36px;background:rgba(27,79,90,0.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0">✅</div>
-            <div><div style="font-size:13px;font-weight:600;color:#0f172a">Validate &amp; Output</div><div style="font-size:12px;color:#64748b">Society-ready cue sheet submitted automatically</div></div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -916,8 +701,8 @@ nav{height:60px}
 <section id="case-studies" style="background:#f8f9fb">
   <div class="container">
     <div class="section-label">Who Uses Tecsolex</div>
-    <h2 class="section-h2">Built for Every Corner of<br><span class="grad">the Media &amp; Entertainment Industry</span></h2>
-    <p class="section-sub">From production houses and broadcasters to content owners and media enterprises — Tecsolex's suite covers every stakeholder across the M&amp;E value chain.</p>
+    <h2 class="section-h2">Built for the<br><span class="grad">Media & Entertainment Industry</span></h2>
+    <p class="section-sub">ActionClap is designed for production houses, channels, and media enterprises looking to produce and manage content smarter.</p>
     <div class="cases-grid">
       <div class="case-card">
         <div class="case-img" style="background:linear-gradient(135deg,#1a0533,#2d1b69)">
@@ -925,11 +710,11 @@ nav{height:60px}
         </div>
         <div class="case-body">
           <div class="case-sector">Production Houses</div>
-          <div class="case-title">End-to-end TV &amp; Film production in one platform</div>
-          <div class="case-desc">From concept ideation and greenlight to cast/crew contracts, production budgets, music rights, and syndication sales — ActionClap manages the complete production lifecycle with full financial visibility.</div>
+          <div class="case-title">Complete TV & Film production management in one platform</div>
+          <div class="case-desc">Production houses use ActionClap to manage the complete solution — from concept ideation and greenlight to cast contracts, music rights, and syndication sales.</div>
           <div class="case-metric">
             <div class="case-metric-item"><div class="num">End-to-End</div><div class="lbl">Production control</div></div>
-            <div class="case-metric-item"><div class="num">Budget vs Cost</div><div class="lbl">Real-time visibility</div></div>
+            <div class="case-metric-item"><div class="num">One</div><div class="lbl">Unified platform</div></div>
           </div>
         </div>
       </div>
@@ -938,26 +723,26 @@ nav{height:60px}
           <div class="case-img-bg">📺</div>
         </div>
         <div class="case-body">
-          <div class="case-sector">Channels &amp; Broadcasters</div>
-          <div class="case-title">Rights, ad sales, and content operations for broadcast channels</div>
-          <div class="case-desc">Channels use RightsK for leakage-free rights management, the Ad Sales suite for spot optimization and promo planning, and Contract management for talent agreements — all interconnected.</div>
+          <div class="case-sector">Channels & Broadcasters</div>
+          <div class="case-title">Rights, contracts, and content operations for broadcast channels</div>
+          <div class="case-desc">Channels rely on Tecsolex's rights management and legal contract system to track acquisition rights, manage talent agreements, and streamline syndication deals.</div>
           <div class="case-metric">
-            <div class="case-metric-item"><div class="num">Zero Leakage</div><div class="lbl">Rights management</div></div>
-            <div class="case-metric-item"><div class="num">AI-Optimized</div><div class="lbl">Ad spot allocation</div></div>
+            <div class="case-metric-item"><div class="num">Rights</div><div class="lbl">Fully managed</div></div>
+            <div class="case-metric-item"><div class="num">Legal</div><div class="lbl">Contracts automated</div></div>
           </div>
         </div>
       </div>
       <div class="case-card">
         <div class="case-img" style="background:linear-gradient(135deg,#0d1f0a,#1a3d14)">
-          <div class="case-img-bg">🌐</div>
+          <div class="case-img-bg">📊</div>
         </div>
         <div class="case-body">
-          <div class="case-sector">Content Owners &amp; OTT</div>
-          <div class="case-title">Catalog monetization through marketplace and syndication</div>
-          <div class="case-desc">Content owners publish their catalog via Tecsolex's Marketplace — generating qualified leads, validating availability instantly, and closing syndication deals with AI-assisted contracts and RMS sync.</div>
+          <div class="case-sector">Production Auditors</div>
+          <div class="case-title">Financial oversight and compliance across productions</div>
+          <div class="case-desc">Production auditors use ActionClap for transparent cost tracking, contract compliance verification, and asset-wise revenue reporting across every production.</div>
           <div class="case-metric">
-            <div class="case-metric-item"><div class="num">Passive → Active</div><div class="lbl">Catalog revenue</div></div>
-            <div class="case-metric-item"><div class="num">Instant</div><div class="lbl">Availability check</div></div>
+            <div class="case-metric-item"><div class="num">Full</div><div class="lbl">Audit trail</div></div>
+            <div class="case-metric-item"><div class="num">Asset-wise</div><div class="lbl">P&amp;L visibility</div></div>
           </div>
         </div>
       </div>
@@ -969,19 +754,19 @@ nav{height:60px}
 <section class="cta-section" id="contact">
   <div class="cta-inner">
     <div class="section-label" style="justify-content:center">Enterprise Deployment</div>
-    <h2 class="cta-h2">Ready to Transform<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Your Media Operations?</span></h2>
-    <p class="cta-sub">Connect with our experts and discover how Tecsolex's enterprise suite — from RightsK and ActionClap to PlanAR and Ad Sales — can drive your journey from content ideation to revenue realization.</p>
+    <h2 class="cta-h2">Speak With Our<br><span style="background:var(--grad1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Experts Today</span></h2>
+    <p class="cta-sub">Ready to produce and manage content smarter? Connect with the Tecsolex team and discover how ActionClap can transform your media operations.</p>
     <div class="cta-actions">
-      <a href="#" data-modal="contact" class="btn-hero">Connect With Us &rarr;</a>
+      <a href="#" data-modal="contact" class="btn-hero">Connect With Us →</a>
       <a href="#" data-modal="contact" class="btn-hero-ghost" style="display:inline-flex;align-items:center;gap:8px">
         <span>📞</span> Contact Tecsolex
       </a>
     </div>
     <div class="cta-form">
       <input type="email" class="cta-input" placeholder="your@company.com">
-      <button class="cta-btn-white">Get Started &rarr;</button>
+      <button class="cta-btn-white">Get Started →</button>
     </div>
-    <p style="margin-top:16px;font-size:12px;color:var(--dim)">support@tecsolex.com &middot; Lotus Business Park, Malad West, Mumbai 400064</p>
+    <p style="margin-top:16px;font-size:12px;color:var(--dim)">support@tecsolex.com · Lotus Business Park, Malad West, Mumbai 400064</p>
   </div>
 </section>
 
@@ -991,9 +776,9 @@ nav{height:60px}
     <div class="footer-top">
       <div class="footer-brand">
         <div style="display:flex;align-items:center">
-          <img src="./tecsolex-logo.png" alt="Tecsolex" style="height:34px;width:auto;filter:brightness(0) invert(1)" onerror="this.outerHTML='<span style=\'font-family:var(--font-head);font-weight:700;font-size:22px;color:#fff;letter-spacing:-1px\'>TECSOLEX</span>'">
+          <img src="./tecsolex-logo.png" alt="Tecsolex" style="height:34px;width:auto;filter:brightness(0) invert(1)" onerror="this.outerHTML='<span style=\'font-family:var(--font-head);font-weight:700;font-size:22px;color:#1b4f5a;letter-spacing:-1px\'>TECSOLEX</span>'">
         </div>
-        <p>Enterprise media solutions platform — from content ideation to revenue realization.</p>
+        <p>AI-native media infrastructure platform for the global entertainment industry.</p>
         <div class="footer-social">
           <a href="#" aria-label="X / Twitter">𝕏</a>
           <a href="#" aria-label="LinkedIn">in</a>
@@ -1003,22 +788,19 @@ nav{height:60px}
       <div class="footer-col">
         <div class="footer-col-title">Products</div>
         <a href="#platform">ActionClap</a>
-        <a href="#platform">RightsK</a>
+        <a href="#platform">Rights Management</a>
         <a href="#platform">Contract &amp; Legal</a>
-        <a href="#platform">Ad Sales &amp; Programming</a>
-        <a href="#platform">PlanAR – AI Cuesheet</a>
         <a href="#platform">Syndication Sales</a>
-        <a href="#platform">Marketplace</a>
-        <a href="#platform">Commercial Process</a>
-        <a href="#platform">Production Management</a>
+        <a href="#platform">Content Hub</a>
+        <a href="#platform">RO Planner</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Solutions</div>
         <a href="#case-studies">Production Houses</a>
         <a href="#case-studies">TV Channels</a>
         <a href="#case-studies">Broadcasters</a>
-        <a href="#case-studies">Content Owners</a>
-        <a href="#case-studies">OTT Platforms</a>
+        <a href="#case-studies">Production Auditors</a>
+        <a href="#case-studies">Media Enterprises</a>
         <a href="#platform">SAP Integration</a>
       </div>
       <div class="footer-col">
@@ -1038,7 +820,7 @@ nav{height:60px}
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Tecsolex. All rights reserved. Technology &middot; Solutions &middot; Excellence. | Lotus Business Park, Malad West, Mumbai 400064</p>
+      <p>© 2026 Tecsolex. All rights reserved. Technology · Solutions · Excellence. | Lotus Business Park, Malad West, Mumbai 400064</p>
       <div class="footer-links">
         <a href="#hero">Privacy Policy</a>
         <a href="#hero">Terms of Service</a>
@@ -1129,6 +911,7 @@ gsap.timeline({ delay: 0.1 })
   .from('.floating-badge', { opacity:0, scale:0.85, duration:0.6, stagger:0.15, ease:'back.out(1.7)' }, '-=0.2');
 
 // ── SCROLL REVEAL ────────────────────────────────────
+// Safe reveal: only animate if element not already in viewport
 function safeReveal(elements, fromVars, stOpts) {
   gsap.utils.toArray(elements).forEach((el, i) => {
     const rect = el.getBoundingClientRect();
@@ -1149,15 +932,30 @@ function safeReveal(elements, fromVars, stOpts) {
   });
 }
 
+// Section headers
 safeReveal('.section-label', { opacity:0, y:14, duration:0.6, ease:'power2.out' });
 safeReveal('.section-h2',    { opacity:0, y:22, duration:0.75, ease:'power3.out' });
 safeReveal('.section-sub',   { opacity:0, y:16, duration:0.65, ease:'power2.out' });
-safeReveal('.module-card',   { opacity:0, y:36, duration:0.65, ease:'power2.out', stagger:0.05 });
+
+// Module cards — specific selector, no :scope
+safeReveal('.module-card',  { opacity:0, y:36, duration:0.65, ease:'power2.out', stagger:0.06 });
+
+// AI feature cards
 safeReveal('.ai-feat',       { opacity:0, y:28, duration:0.6, ease:'power2.out', stagger:0.07 });
+
+// Case cards
 safeReveal('.case-card',     { opacity:0, y:40, duration:0.7, ease:'power2.out', stagger:0.1 });
+
+// Eco features
 safeReveal('.eco-feature',   { opacity:0, x:28, duration:0.65, ease:'power2.out', stagger:0.08 });
+
+// AI terminal
 safeReveal('.ai-terminal',   { opacity:0, x:40, duration:0.9, ease:'power3.out' });
+
+// Video
 safeReveal('.video-wrapper', { opacity:0, y:44, scale:0.97, duration:1, ease:'power3.out' });
+
+// CTA section items
 safeReveal('.cta-h2',     { opacity:0, y:28, duration:0.8, ease:'power3.out' });
 safeReveal('.cta-sub',    { opacity:0, y:20, duration:0.65, ease:'power2.out' });
 safeReveal('.cta-actions',{ opacity:0, y:16, duration:0.6, ease:'power2.out' });
@@ -1196,6 +994,7 @@ document.addEventListener('mousemove', e => {
 document.querySelectorAll('.data-stream').forEach((s,i) => {
   gsap.to(s,{opacity:0.18,duration:0.6,delay:i*0.5,yoyo:true,repeat:-1,repeatDelay:1.8});
 });
+
 </script>
 
 <!-- CONTACT MODAL -->
@@ -1225,17 +1024,15 @@ document.querySelectorAll('.data-stream').forEach((s,i) => {
         <span class="check-label">Products of Interest</span>
         <div class="check-grid">
           <label class="check-item"><input type="checkbox" name="products" value="ActionClap"><span>ActionClap</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="RightsK"><span>RightsK</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Contract &amp; Legal"><span>Contract &amp; Legal</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Ad Sales &amp; Programming"><span>Ad Sales &amp; Programming</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="PlanAR - AI Cuesheet"><span>PlanAR – AI Cuesheet</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Contract & Legal"><span>Contract &amp; Legal</span></label>
           <label class="check-item"><input type="checkbox" name="products" value="Syndication Sales"><span>Syndication Sales</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Marketplace"><span>Marketplace</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Commercial Process Optimisation"><span>Commercial Process</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Production Management System"><span>Production Management</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Rights Management"><span>Rights Management</span></label>
           <label class="check-item"><input type="checkbox" name="products" value="Content Hub"><span>Content Hub</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Marketplace"><span>Marketplace</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="RO Planner"><span>RO Planner</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Community"><span>Community</span></label>
           <label class="check-item"><input type="checkbox" name="products" value="Enterprise Integrations"><span>Enterprise Integrations</span></label>
-          <label class="check-item"><input type="checkbox" name="products" value="Concept &amp; Greenlight"><span>Concept &amp; Greenlight</span></label>
+          <label class="check-item"><input type="checkbox" name="products" value="Concept & Greenlight"><span>Concept &amp; Greenlight</span></label>
         </div>
         <button type="submit" class="modal-submit">Send Enquiry &#8594;</button>
       </form>
